@@ -104,13 +104,16 @@ app.post("/register", (req, res) => {
   const isAdmin = temVar.isAdmin;
   const arr = [name, email, hashedPassword, isAdmin];
 
-  if (getUserWithEmail(arr)) {
-    //say that email is already taken
-  } else {
-    registerUserId(arr);
-  }
-  // userName: '123', email: '123@g', password: '123'
-
-  res.redirect("/");
+  getUserWithEmail(arr) // Checks helper funciton asynchronously
+    .then((value) => {
+      if (value) {
+        // Checks if email exist in data base
+        return res.status(403).send("<h1>400</h1><h2>Email already in use</h2>");
+      } else {
+        console.log('getUserWithEmail: ', getUserWithEmail(arr));
+        registerUserId(arr);
+        res.redirect("/");
+      }
+    });
 });
 
