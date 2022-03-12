@@ -55,19 +55,19 @@ VALUES (3,3);
 
 
 INSERT INTO messages (user_id, item_id, message)
-VALUES (1,2,"where was this hat made?");
+VALUES (1,2,'where was this hat made?');
 
 INSERT INTO messages (user_id, item_id, message)
-VALUES (2,3,"what condition is the shirt in? ");
+VALUES (2,3, 'what condition is the shirt in?');
 
 INSERT INTO messages (user_id, item_id, message)
-VALUES (3,1, "will you take 50 bucks?" );
+VALUES (3,1, 'will you take 50 bucks?' );
 
 INSERT INTO messages (user_id, item_id, message)
-VALUES (3,2,"can we meet tomorrow?")
+VALUES (3,2, 'can we meet tomorrow?');
 
 INSERT INTO messages (user_id, item_id, message)
-VALUES (3,2,"and will you do 40?");
+VALUES (3,2,'and will you do 40?');
 
 INSERT INTO messages (user_id, item_id, message)
-VALUES (1,3, "is it still availible?");
+VALUES (1,3, 'is it still availible?');
