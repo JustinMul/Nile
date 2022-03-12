@@ -24,16 +24,16 @@ INSERT INTO items (admin_id, title, description,thumbnail_photo_url, cover_photo
 VALUES (2, 'hat', 'white', '/image3', '/image4', 50, '2022-03-05', True, 'Canada', 'Montreal', 'QC');
 
 INSERT INTO items (admin_id, title, description,thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
-VALUES (1, 'shirt','', '/image5', '/image6', 80, '2022-01-15', FALSE, 'Canada', 'London', 'ON');
+VALUES (1, 'shirt','blue', '/image5', '/image6', 80, '2022-01-15', FALSE, 'Canada', 'London', 'ON');
 
 INSERT INTO items (admin_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
-VALUES (1, 'dress', '/image', '/image2', 25, '2022-03-09', FALSE, 'Canada', 'Toronto', 'ON');
+VALUES (1, 'dress', 'description','/image', '/image2', 25, '2022-03-09', FALSE, 'Canada', 'Toronto', 'ON');
 
 INSERT INTO items (admin_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
-VALUES (4, 'pants', '/image3', '/image4', 65, '2022-02-05', True, 'Canada', 'Montreal', 'QC');
+VALUES (4, 'pants', 'demim', '/image3', '/image4', 65, '2022-02-05', True, 'Canada', 'Montreal', 'QC');
 
 INSERT INTO items (admin_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
-VALUES (5, 'shirt', '/image5', '/image6', 80, '2022-01-15', True, 'Canada', 'London', 'ON');
+VALUES (5, 'shirt', 'graphic text' , '/image5', '/image6', 80, '2022-01-15', True, 'Canada', 'London', 'ON');
 
 
 INSERT INTO features (user_id, item_id)
@@ -55,7 +55,7 @@ VALUES (3,3);
 
 
 INSERT INTO messages (user_id, item_id, message)
-VALUES (1,2," where was this hat made?");
+VALUES (1,2,"where was this hat made?");
 
 INSERT INTO messages (user_id, item_id, message)
 VALUES (2,3,"what condition is the shirt in? ");
