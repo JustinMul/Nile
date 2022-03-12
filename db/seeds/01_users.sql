@@ -24,6 +24,7 @@ INSERT INTO items (admin_id, title, description,thumbnail_photo_url, cover_photo
 VALUES (2, 'hat', 'white', '/image3', '/image4', 50, '2022-03-05', True, 'Canada', 'Montreal', 'QC');
 
 INSERT INTO items (admin_id, title, description,thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
+
 VALUES (1, 'shirt','', '/image5', '/image6', 80, '2022-01-15', FALSE, 'Canada', 'London', 'ON');
 
 INSERT INTO items (admin_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
@@ -61,7 +62,7 @@ INSERT INTO messages (user_id, item_id, message)
 VALUES (2,3, 'what condition is the shirt in?');
 
 INSERT INTO messages (user_id, item_id, message)
-VALUES (3,1, 'will you take 50 bucks?' );
+VALUES (3,1, 'will you take 50 bucks?');
 
 INSERT INTO messages (user_id, item_id, message)
 VALUES (3,2, 'can we meet tomorrow?');
