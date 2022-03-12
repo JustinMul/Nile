@@ -5,19 +5,17 @@ const pool = new Pool({
   host: 'localhost',
   database: 'midterm'
 });
-const getUserWithEmail = function(email) {
+const getUserWithEmail = function(arr) {
   return pool
-    .query(`SELECT * FROM users WHERE email = $1`, [email])
+    .query(`SELECT * FROM users WHERE email = $1`, [arr[1]])
     .then((res) => {
-      if (res) {
-        //return message saying email is already registered
+      if (res.rowCount > 0) {
+        console.log("Email used already", res.rowCount);
         return true;
       } else {
-        return null;
+        console.log("You are good", res.rowCount);
+        return false;
       }
-    })
-    .catch((err) => {
-      console.log(err.message);
     });
 };
-exports.getUserWithEmail = getUserWithEmail;
+module.exports = getUserWithEmail;
