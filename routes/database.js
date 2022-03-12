@@ -13,10 +13,15 @@ const pool = new Pool({
 
 
 const registerUserId = function(user) {
+  if (user[3] === "Admin") {
+    user[3] = true;
+  } else {
+    user[3] = false;
+  }
 
   return pool
-    .query(`INSERT INTO users (name, email, password)
-    VALUES ($1, $2, $3);`, [user[0], user[1], user[2]])
+    .query(`INSERT INTO users (name, email, password, is_admin)
+    VALUES ($1, $2, $3, $4);`, [user[0], user[1], user[2], user[3]])
     .then((result) => {
       return console.log('it worked');
     })

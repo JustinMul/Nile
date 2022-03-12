@@ -10,6 +10,7 @@ const morgan = require("morgan");
 const bcrypt = require('bcryptjs');
 const cookieSession = require('cookie-session');
 const registerUserId = require('./routes/database');
+const getUserWithEmail = require('./HelperFunctions/getUserEmail');
 
 
 // PG database client/connection setup
@@ -100,8 +101,14 @@ app.post("/register", (req, res) => {
   const email = temVar.email;
   const password = temVar.password;
   const hashedPassword = bcrypt.hashSync(password, 10);
-  const arr = [name, email, hashedPassword];
-  registerUserId(arr);
+  const isAdmin = temVar.isAdmin;
+  const arr = [name, email, hashedPassword, isAdmin];
+
+  if (getUserWithEmail(arr)) {
+    //say that email is already taken
+  } else {
+    registerUserId(arr);
+  }
   // userName: '123', email: '123@g', password: '123'
 
   res.redirect("/");
