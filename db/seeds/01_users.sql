@@ -3,7 +3,7 @@ INSERT INTO users (name, email, password, is_admin) VALUES ('Alice', 'alice@g', 
 INSERT INTO users (name, email, password, is_admin)  VALUES ('Kira', 'Kira8945@gmail.com', 'password', TRUE);
 INSERT INTO users (name, email, password)  VALUES ('James', 'james@g', 'password');
 INSERT INTO users (name, email, password)  VALUES ('Amanda', 'amanda@', 'password');
-INSERT INTO users (name, email, password, is_admin) VALUES ('Ab', 'jayda.mraz@hotmail.com', 'password'. TRUE);
+INSERT INTO users (name, email, password, is_admin) VALUES ('Ab', 'jayda.mraz@hotmail.com', 'password', TRUE);
 INSERT INTO users (name, email, password, is_admin) VALUES ('Aba', 'savanna58@yahoo.com', 'password', TRUE);
 INSERT INTO users (name, email, password) VALUES ('Abad', 'iheaney@anderson.com', 'password');
 INSERT INTO users (name, email, password) VALUES ('Abagael', 'pdoyle@yahoo.com', 'password');
@@ -24,7 +24,7 @@ INSERT INTO items (admin_id, title, description,thumbnail_photo_url, cover_photo
 VALUES (2, 'hat', 'white', '/image3', '/image4', 50, '2022-03-05', True, 'Canada', 'Montreal', 'QC');
 
 INSERT INTO items (admin_id, title, description,thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
-VALUES (1, 'shirt','blue', '/image5', '/image6', 80, '2022-01-15', FALSE, 'Canada', 'London', 'ON');
+VALUES (1, 'shirt', 'blue', '/image5', '/image6', 80, '2022-01-15', FALSE, 'Canada', 'London', 'ON');
 
 INSERT INTO items (admin_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
 VALUES (1, 'dress', 'description','/image', '/image2', 25, '2022-03-09', FALSE, 'Canada', 'Toronto', 'ON');
@@ -61,7 +61,7 @@ INSERT INTO messages (user_id, item_id, message)
 VALUES (2,3, 'what condition is the shirt in?');
 
 INSERT INTO messages (user_id, item_id, message)
-VALUES (3,1, 'will you take 50 bucks?' );
+VALUES (3,1, 'will you take 50 bucks?');
 
 INSERT INTO messages (user_id, item_id, message)
 VALUES (3,2, 'can we meet tomorrow?');
