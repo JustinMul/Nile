@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <title>Home Page</title>
+  <title>register</title>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -16,7 +15,21 @@
 
 <body>
   <%- include('partials/_header') %>
-  <h1>Listing</h1>
+  <div class="container">
+    <form>
+    <h1>Register Account</h1>
+    <label for="userName"><b>User Name</b></label>
+    <input type="name" placeholder="Enter Password" name="userName" required>
+
+    <label for="name"><b>Email Addres</b></label>
+    <input type="email" placeholder="Enter email" name="email" required>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+
+    <button type="submit">Login</button>
+  </form>
+  </div>
 </body>
 
 </html>

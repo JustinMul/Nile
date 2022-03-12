@@ -7,6 +7,8 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const bcrypt = require('bcryptjs');
+const cookieSession = require('cookie-session');
 
 
 // PG database client/connection setup
@@ -51,6 +53,31 @@ app.use("/api/widgets", widgetsRoutes(db));
 
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
+app.get("/item", (req, res) => {
+  res.render("items");
+});
+
+
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+app.get("/edit", (req, res) => {
+  res.render("edit");
+});
+
+app.get("/fav", (req, res) => {
+  res.render("favourites");
+});
+
+app.get("/listings", (req, res) => {
+  res.render("listings");
 });
 
 app.listen(PORT, () => {
