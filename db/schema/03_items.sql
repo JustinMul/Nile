@@ -1,9 +1,10 @@
 -- Table outlining the various items and their characteristics
 DROP TABLE IF EXISTS items CASCADE;
 
+/* delete user_id */
 CREATE TABLE items (
   id SERIAL PRIMARY KEY NOT NULL,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  admin_id INTEGER REFERENCES admins(id) ON DELETE CASCADE,
 
   title VARCHAR(255) NOT NULL,
   description TEXT,
