@@ -9,8 +9,8 @@ const app = express();
 const morgan = require("morgan");
 const bcrypt = require('bcryptjs');
 const cookieSession = require('cookie-session');
-const registerUserId = require('./routes/database');
-const getUserWithEmail = require('./HelperFunctions/getUserEmail');
+// const registerUserId = require('./routes/database');
+// const getUserWithEmail = require('./HelperFunctions/getUserEmail');
 
 
 // PG database client/connection setup
@@ -44,7 +44,9 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
-// const registerRoute = require('./routes/registerRoute');
+const registerRoutes = require("./routes/register"); // register
+const loginRoutes = require("./routes/login"); // Login
+
 
 
 
@@ -52,7 +54,8 @@ const widgetsRoutes = require("./routes/widgets");
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
-// app.use("/api/registerRoute", registerRoute(db));
+app.use("/", registerRoutes(db)); // register
+app.use("/", loginRoutes(db)); // Login
 
 // Note: mount other resources here, using the same pattern above
 
@@ -68,17 +71,8 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/register", (req, res) => {
-  res.render("register");
-});
-
-
 app.get("/item/:id", (req, res) => {
   res.render("items");
-});
-
-app.get("/login", (req, res) => {
-  res.render("login");
 });
 
 app.get("/edit", (req, res) => {
@@ -89,28 +83,5 @@ app.get("/fav", (req, res) => {
   res.render("favourites");
 });
 
-// this is the page for admin to create a listing
-app.get("/listings", (req, res) => {
-  res.render("listing");
-});
 
-app.post("/register", (req, res) => {
-  console.log('this is res', req.body);
-  const temVar = req.body;
-  const name = temVar.userName;
-  const email = temVar.email;
-  const password = temVar.password;
-  const hashedPassword = bcrypt.hashSync(password, 10);
-  const isAdmin = temVar.isAdmin;
-  const arr = [name, email, hashedPassword, isAdmin];
-
-  if (getUserWithEmail(arr)) {
-    //say that email is already taken need to add css error message
-  } else {
-    registerUserId(arr);
-  }
-
-
-  res.redirect("/");
-});
 
