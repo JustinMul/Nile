@@ -20,11 +20,32 @@ const getUserEmail = function(email) {
 };
 exports.getUserEmail = getUserEmail;
 
+const getAdminEmail = function(email) {
+  return pool
+    .query(`SELECT * FROM admins WHERE email = $1`, [email])
+    .then((res) => {
+      if (res.rowCount > 0) {
+        console.log("Email used already", res.rowCount);
+        return true;
+      } else {
+        console.log("You are good", res.rowCount);
+        return false;
+      }
+    });
+};
+exports.getAdminEmail = getAdminEmail;
+
 const registerUserId = function(user) {
   if (user[3] === "Admin") {
-    user[3] = true;
-  } else {
-    user[3] = false;
+    return pool
+      .query(`INSERT INTO admins (name, email, password)
+  VALUES ($1, $2, $3) RETURNING *;`, [user[0], user[1], user[2]])
+      .then((result) => {
+        return console.log('it worked');
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   }
 
   return pool
