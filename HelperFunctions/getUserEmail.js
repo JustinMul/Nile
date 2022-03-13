@@ -5,9 +5,9 @@ const pool = new Pool({
   host: 'localhost',
   database: 'midterm'
 });
-const getUserEmail = function(arr) {
+const getUserEmail = function(email) {
   return pool
-    .query(`SELECT * FROM users WHERE email = $1`, [arr[1]])
+    .query(`SELECT * FROM users WHERE email = $1`, [email])
     .then((res) => {
       if (res.rowCount > 0) {
         console.log("Email used already", res.rowCount);
@@ -18,6 +18,7 @@ const getUserEmail = function(arr) {
       }
     });
 };
+exports.getUserEmail = getUserEmail;
 
 const registerUserId = function(user) {
   if (user[3] === "Admin") {
@@ -36,5 +37,4 @@ const registerUserId = function(user) {
       console.log(err.message);
     });
 };
-
-module.exports = {getUserEmail, registerUserId};
+exports.registerUserId = registerUserId;
