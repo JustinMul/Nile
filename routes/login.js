@@ -27,11 +27,11 @@ module.exports = (db) => {
               if (bcrypt.compareSync(password, hashedPassword)) {
                 res.redirect("/");
               } else {
-                res.status(403).send("<h1>403</h1><h2>Password is incorrect</h2>");
+                res.status(403).send("<h1>403</h1><h2>Email or password does not exist or incorrect</h2>");
               }
             });
         } else {
-          return res.status(403).send("<h1>400</h1><h2>Email already in use</h2>");
+          return res.status(403).send("<h1>400</h1><h2>Email or password does not exist or incorrect</h2>");
         }
       });
   });
