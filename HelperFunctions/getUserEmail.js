@@ -5,7 +5,7 @@ const pool = new Pool({
   host: 'localhost',
   database: 'midterm'
 });
-const getUserWithEmail = function(arr) {
+const getUserEmail = function(arr) {
   return pool
     .query(`SELECT * FROM users WHERE email = $1`, [arr[1]])
     .then((res) => {
@@ -18,4 +18,23 @@ const getUserWithEmail = function(arr) {
       }
     });
 };
-module.exports = getUserWithEmail;
+
+const registerUserId = function(user) {
+  if (user[3] === "Admin") {
+    user[3] = true;
+  } else {
+    user[3] = false;
+  }
+
+  return pool
+    .query(`INSERT INTO users (name, email, password, is_admin)
+  VALUES ($1, $2, $3, $4) RETURNING *;`, [user[0], user[1], user[2], user[3]])
+    .then((result) => {
+      return console.log('it worked');
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+module.exports = {getUserEmail, registerUserId};
