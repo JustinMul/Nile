@@ -28,9 +28,16 @@ module.exports = (db) => {
           // Checks if email exist in data base
           return res.status(403).send("<h1>400</h1><h2>Email already in use</h2>");
         } else {
-          console.log('getUserEmail: ', database.getUserEmail(email));
-          database.registerUserId(arr);
-          res.redirect("/");
+          database.getAdminEmail(email)
+            .then((value) => {
+              if (value) {
+                // Checks if email exist in admin data base
+                return res.status(403).send("<h1>400</h1><h2>Email already in use</h2>");
+              } else {
+                database.registerUserId(arr);
+                res.redirect("/");
+              }
+            });
         }
       });
   });
