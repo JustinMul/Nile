@@ -105,11 +105,11 @@ app.post("/register", (req, res) => {
   const arr = [name, email, hashedPassword, isAdmin];
 
   if (getUserWithEmail(arr)) {
-    //say that email is already taken
+    //say that email is already taken need to add css error message
   } else {
     registerUserId(arr);
   }
-  // userName: '123', email: '123@g', password: '123'
+
 
   res.redirect("/");
 });
