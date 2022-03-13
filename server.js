@@ -75,10 +75,6 @@ app.get("/item/:id", (req, res) => {
   res.render("items");
 });
 
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-
 app.get("/edit", (req, res) => {
   res.render("edit");
 });
@@ -86,8 +82,3 @@ app.get("/edit", (req, res) => {
 app.get("/fav", (req, res) => {
   res.render("favourites");
 });
-
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-
