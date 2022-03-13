@@ -17,23 +17,23 @@ INSERT INTO users (name, email, password) VALUES ('Abbey', 'kali57@yahoo.com', '
 INSERT INTO users (name, email, password) VALUES ('Abbi', 'nblick@johnston.com', 'password');
 INSERT INTO users (name, email, password) VALUES ('Abbie', 'icummerata@gmail.com', 'password');
 
-INSERT INTO items (admin_id, title, description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
+INSERT INTO items (user_id, title, description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
 VALUES (1, 'shoe', 'black', '/image', '/image2', 100, '2022-03-11', FALSE, 'Canada', 'Toronto', 'ON');
 
-INSERT INTO items (admin_id, title, description,thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
+INSERT INTO items (user_id, title, description,thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
 VALUES (2, 'hat', 'white', '/image3', '/image4', 50, '2022-03-05', True, 'Canada', 'Montreal', 'QC');
 
-INSERT INTO items (admin_id, title, description,thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
+INSERT INTO items (user_id, title, description,thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
 
 VALUES (1, 'shirt','', '/image5', '/image6', 80, '2022-01-15', FALSE, 'Canada', 'London', 'ON');
 
-INSERT INTO items (admin_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
+INSERT INTO items (user_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
 VALUES (1, 'dress', 'description','/image', '/image2', 25, '2022-03-09', FALSE, 'Canada', 'Toronto', 'ON');
 
-INSERT INTO items (admin_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
+INSERT INTO items (user_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
 VALUES (4, 'pants', 'demim', '/image3', '/image4', 65, '2022-02-05', True, 'Canada', 'Montreal', 'QC');
 
-INSERT INTO items (admin_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
+INSERT INTO items (user_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
 VALUES (5, 'shirt', 'graphic text' , '/image5', '/image6', 80, '2022-01-15', True, 'Canada', 'London', 'ON');
 
 
