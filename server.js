@@ -56,6 +56,7 @@ const registerRoutes = require("./routes/register"); // register
 const loginRoutes = require("./routes/login"); // Login
 const indexRoutes = require('./routes/index'); // Iindex
 const itemsRoutes = require('./routes/items'); // Items
+const logoutRoutes = require('./routes/logout'); // logout
 
 
 
@@ -66,7 +67,8 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use("/", registerRoutes(db)); // register
 app.use("/", loginRoutes(db)); // Login
 app.use("/", indexRoutes(db)); // Index
-app.use("/", itemsRoutes(db)); //Items
+app.use("/", itemsRoutes(db)); // Items
+app.use("/", logoutRoutes(db)); // Logout
 
 // Note: mount other resources here, using the same pattern above
 
