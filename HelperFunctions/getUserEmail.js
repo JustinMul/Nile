@@ -36,21 +36,9 @@ const getAdminEmail = function(email) {
 exports.getAdminEmail = getAdminEmail;
 
 const registerUserId = function(user) {
-  if (user[3] === "Admin") {
-    return pool
-      .query(`INSERT INTO admins (name, email, password)
-  VALUES ($1, $2, $3) RETURNING *;`, [user[0], user[1], user[2]])
-      .then((result) => {
-        return console.log('it worked');
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }
-
   return pool
-    .query(`INSERT INTO users (name, email, password, is_admin)
-  VALUES ($1, $2, $3, $4) RETURNING *;`, [user[0], user[1], user[2], user[3]])
+    .query(`INSERT INTO users (name, email, password)
+  VALUES ($1, $2, $3) RETURNING *;`, [user[0], user[1], user[2]])
     .then((result) => {
       return console.log('it worked');
     })
@@ -59,3 +47,42 @@ const registerUserId = function(user) {
     });
 };
 exports.registerUserId = registerUserId;
+
+const registerAdminId = function(admin) {
+  return pool
+    .query(`INSERT INTO admins (name, email, password)
+VALUES ($1, $2, $3) RETURNING *;`, [admin[0], admin[1], admin[2]])
+    .then((result) => {
+      return console.log('it worked');
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+
+};
+exports.registerAdminId = registerAdminId;
+
+const getName = function(email) {
+  return pool
+    .query(`SELECT name FROM users WHERE email = $1`, [email])
+    .then((res) => {
+      if (res.rowCount > 0) {
+        console.log("Email in database", res);
+        return res.rows[0].name;
+      } else {
+        console.log("Not in users database, checking admin...", res.rowCount);
+        return pool
+          .query(`SELECT name FROM admins WHERE email = $1`, [email])
+          .then((res) => {
+            if (res.rowCount > 0) {
+              console.log("Email in admin database", res.rows[0].name);
+              return res.rows[0].name;
+            } else {
+              console.log("You are good", res.rowCount);
+              return false;
+            }
+          });
+      }
+    });
+};
+exports.getName = getName;
