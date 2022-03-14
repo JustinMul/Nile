@@ -67,15 +67,15 @@ const getName = function(email) {
     .then((res) => {
       if (res.rowCount > 0) {
         console.log("Email in database", res);
-        return true;
+        return res.rows[0].name;
       } else {
         console.log("Not in users database, checking admin...", res.rowCount);
         return pool
           .query(`SELECT name FROM admins WHERE email = $1`, [email])
           .then((res) => {
             if (res.rowCount > 0) {
-              console.log("Email in admin database", res);
-              return true;
+              console.log("Email in admin database", res.rows[0].name);
+              return res.rows[0].name;
             } else {
               console.log("You are good", res.rowCount);
               return false;
