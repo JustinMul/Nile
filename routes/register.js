@@ -26,7 +26,7 @@ module.exports = (db) => {
         .then((value) => {
           console.log("value for getUserEmail", value);
           if (value) {
-          // Checks if email exist in data base
+          // Checks if email exist user in data base
             return res.status(403).send("<h1>400</h1><h2>Email already in use</h2>");
           } else {
             database.registerUserId(arr);
