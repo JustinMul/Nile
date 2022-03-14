@@ -10,8 +10,10 @@ const database = require('../HelperFunctions/getUserEmail.js');
 module.exports = (db) => {
 
   router.get("/login", (req, res) => {
+    console.log("cookie session for GET TEST: ", req.session.user_id);
+    const accountEmail = req.session.user_id;
+    console.log("TEST NAME: ", database.getName(accountEmail));
     res.render("login");
-
   });
 
   router.post("/login", (req, res) => {
@@ -21,7 +23,7 @@ module.exports = (db) => {
     const email = temVar.email;
     const password = temVar.password;
     req.session.user_id = email;
-    console.log(req.session)
+    console.log("cookie session TEST: ", req.session.user_id);
 
     database.getUserEmail(email) // Checks helper funciton asynchronously
       .then((value) => {// Returns true or false
