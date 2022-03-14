@@ -10,6 +10,7 @@ module.exports = (db) => {
 
   router.post("/items", (req, res) => {
     console.log(req.body);
+    console.log('hi');
     const temVar = req.body;
     const title = temVar.title;
     const description = temVar.description;
