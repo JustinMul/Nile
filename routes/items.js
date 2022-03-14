@@ -32,7 +32,7 @@ module.exports = (db) => {
     const country = temVar.country;
     const city = temVar.city;
     const province = temVar.province;
-    console.log(date)
+
     pool
       .query(`SELECT id FROM admins WHERE email = $1`, [req.session.user_id])
       .then((res) => {

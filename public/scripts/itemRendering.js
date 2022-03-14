@@ -41,7 +41,7 @@ const renderTweets = function(tweets) {
 
 
 const loadItems =  function() {
-  $.ajax('/item', { method: 'GET' })
+  $.ajax('/items', { method: 'GET' })
     .then(function(tweets) {
       return renderTweets(tweets);
     });
