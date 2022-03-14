@@ -58,6 +58,7 @@ VALUES ($1, $2, $3) RETURNING *;`, [admin[0], admin[1], admin[2]])
     .catch((err) => {
       console.log(err.message);
     });
+
 };
 exports.registerAdminId = registerAdminId;
 

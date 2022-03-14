@@ -27,7 +27,6 @@ module.exports = (db) => {
     const email = temVar.email;
     const password = temVar.password;
     req.session.user_id = email;
-    console.log("cookie session TEST: ", req.session.user_id);
 
     database.getUserEmail(email) // Checks helper funciton asynchronously
       .then((value) => {// Returns true or false
