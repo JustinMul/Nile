@@ -12,8 +12,12 @@ module.exports = (db) => {
   router.get("/login", (req, res) => {
     console.log("cookie session for GET TEST: ", req.session.user_id);
     const accountEmail = req.session.user_id;
-    console.log("TEST NAME: ", database.getName(accountEmail));
-    res.render("login");
+    console.log("accountemail cookie",accountEmail);
+    database.getName(accountEmail).then((value) => {
+      console.log("TEST NAME: ", value);
+      const templateVars = {value};
+      res.render("login", templateVars);
+    });
   });
 
   router.post("/login", (req, res) => {
