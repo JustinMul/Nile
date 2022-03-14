@@ -14,7 +14,42 @@
 </head>
 
 <body>
-  <h1>Have fun! 🥔</h1>
+  <%- include('partials/_header') %>
+  <div class="container">
+    <form action="/items" method="POST">
+    <h1>List Item To Be Sold</h1>
+    <label for="title"><b>Item Name</b></label>
+    <input type="text" placeholder="title" name="title" required>
+
+    <label for="description"><b>description</b></label>
+    <input type="text" placeholder="Enter description" name="description" required>
+
+    <label for="thumbnail_photo_url"><b>Thumbnail Photo URL</b></label>
+    <input type="text" placeholder="Enter Thumbnail Photo URL" name="thumbnail_photo_url" required>
+
+    <label for="cover_photo_url"><b>Cover Photo URL</b></label>
+    <input type="text" placeholder="Enter Cover Photo URL" name="cover_photo_url" required>
+
+    <label for="cost"><b>Price</b></label>
+    <input type="text" placeholder="Enter Price" name="cost" required>
+
+
+    <!-- note didn't add input for date as we need to just get the date when the liting was created  -->
+    <!-- note didn't add input for sold either as well have to figure out something else -->
+
+    <label for="country"><b>country</b></label>
+    <input type="text" placeholder="Enter the country this is being sold in" name="country" required>
+
+    <label for="city"><b>city</b></label>
+    <input type="text" placeholder="Enter the city this is being sold in" name="city" required>
+
+    <label for="province"><b>province</b></label>
+    <input type="text" placeholder="Enter the province this is being sold in" name="province" required>
+
+    <button type="submit">Login</button>
+  </form>
+  </div>
 </body>
+
 
 </html>

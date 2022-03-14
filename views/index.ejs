@@ -19,11 +19,20 @@
 
 <body>
   <%- include('partials/_header') %>
-  <h1>Listing</h1>
+  <h1 class="indexPageTitle">Listing</h1>
+
+  <div class="listings">
+    <% for (let item of items) { %>
+
+      <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>
+      <a href="http://localhost:8080/<%=item.id%>">
+  <% } %>
+
+
+      </div>
+  </div>
+  <%- include('partials/_footer') %>
 </body>
 
-<!-- <add footer-carmen> -->
-<footer>
-  <%- include('partials/_footer') %>
-</footer>
+
 </html>

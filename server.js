@@ -40,6 +40,14 @@ app.use(
 
 app.use(express.static("public"));
 
+app.use(cookieSession({
+  name: 'session',
+  keys: ["My" , 'secret', 'keys'],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
@@ -48,6 +56,7 @@ const registerRoutes = require("./routes/register"); // register
 const loginRoutes = require("./routes/login"); // Login
 const indexRoutes = require('./routes/index'); // Iindex
 const itemsRoutes = require('./routes/items'); // Items
+const itemIdRoutes = require('./routes/itemId');//ItemId
 
 
 
@@ -59,6 +68,8 @@ app.use("/", registerRoutes(db)); // register
 app.use("/", loginRoutes(db)); // Login
 app.use("/", indexRoutes(db)); // Index
 app.use("/", itemsRoutes(db)); //Items
+app.use("/", itemIdRoutes(db)); //ItemId
+
 
 // Note: mount other resources here, using the same pattern above
 
@@ -70,14 +81,11 @@ app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
-// app.get("/", (req, res) => {
-//   res.render("index");
-// });
-
+/*
 app.get("/item/:id", (req, res) => {
   res.render("items");
 });
-
+*/
 app.get("/edit", (req, res) => {
   res.render("edit");
 });

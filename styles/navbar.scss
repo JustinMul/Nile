@@ -1,0 +1,158 @@
+.navbar {
+  // border: solid;
+  // border-color: white;
+  width: 100%;
+  height: 60px;
+  background-color: rgb(1, 39, 4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nav_button{
+  // border: solid;
+  // border-color: white;
+  font-family: 'Bungee Inline', cursive;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.divider {
+  color: aliceblue;
+}
+
+
+.title {
+  font-size: 150%;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 2.5px;
+  color: rgb(28, 170, 170);
+}
+
+.nav_register {
+  padding: 5px;
+}
+
+.nav_login {
+  margin-right: 20px;
+  padding: 5px;
+}
+
+.searchbar_container {
+  // border: solid;
+  // border-color: orange;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.searchbar_container:hover {
+  border: solid;
+  border-color: orange;
+  border-radius: 5px;
+}
+
+.search_button {
+  background-color: rgb(255, 180, 41);
+  border-radius: 5px;
+}
+
+.search_button:hover {
+  background-color:rgb(248, 161, 0);
+}
+
+.searchbar {
+  height: 30px;
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+// .account_container {
+//   margin-left: 20px;
+//   margin-right: 10px;
+//   padding: 5px;
+//   display: flex;
+//   flex-direction: column;
+//   color: aliceblue;
+// }
+
+.sign_in {
+  font-size: smaller;
+  font-family: 'Abril Fatface', cursive;
+  font-weight: lighter;
+}
+
+.navbar:hover {
+  box-shadow: 1em -20px 40px 20px rgb(2, 104, 12);
+}
+
+.title:hover {
+  border: solid;
+  border-color: aliceblue;
+}
+
+.nav_register:hover {
+  border: solid;
+  border-color: aliceblue;
+}
+
+.nav_login:hover {
+  border: solid;
+  border-color: aliceblue;
+}
+
+// .account_container:hover {
+//   border: solid;
+//   border-color: aliceblue;
+// }
+
+/* Dropdown Button */
+.dropbtn {
+  margin-right: 10px;
+  margin-left: 20px;
+  font-size: smaller;
+  background-color: rgb(255, 180, 41);
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  font-size: small;
+  padding: 6px 6px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: rgb(248, 161, 0);}
