@@ -45,7 +45,9 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const registerRoutes = require("./routes/register"); // register
-
+const loginRoutes = require("./routes/login"); // Login
+const indexRoutes = require('./routes/index'); // Iindex
+const itemsRoutes = require('./routes/items'); // Items
 
 
 
@@ -54,6 +56,9 @@ const registerRoutes = require("./routes/register"); // register
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/", registerRoutes(db)); // register
+app.use("/", loginRoutes(db)); // Login
+app.use("/", indexRoutes(db)); // Index
+app.use("/", itemsRoutes(db)); //Items
 
 // Note: mount other resources here, using the same pattern above
 
@@ -65,27 +70,14 @@ app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
 
 app.get("/item/:id", (req, res) => {
   res.render("items");
 });
 
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-
 app.get("/edit", (req, res) => {
   res.render("edit");
 });
-
-app.get("/fav", (req, res) => {
-  res.render("favourites");
-});
-
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-
