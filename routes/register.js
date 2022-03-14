@@ -19,28 +19,32 @@ module.exports = (db) => {
     const password = temVar.password;
     const hashedPassword = bcrypt.hashSync(password, 10);
     const isAdmin = temVar.isAdmin;
-    const arr = [name, email, hashedPassword, isAdmin];
-
-    database.getUserEmail(email) // Checks helper funciton asynchronously
-      .then((value) => {
-        console.log("value for getUserEmail", value);
-        if (value) {
+    const arr = [name, email, hashedPassword];
+    console.log("isAdmin", isAdmin);
+    if (isAdmin === "User") {
+      database.getUserEmail(email) // Checks helper funciton asynchronously
+        .then((value) => {
+          console.log("value for getUserEmail", value);
+          if (value) {
           // Checks if email exist in data base
-          return res.status(403).send("<h1>400</h1><h2>Email already in use</h2>");
-        } else {
-          database.getAdminEmail(email)
-            .then((value) => {
-              if (value) {
-                // Checks if email exist in admin data base
-                return res.status(403).send("<h1>400</h1><h2>Email already in use</h2>");
-              } else {
-                database.registerUserId(arr);
-                res.redirect("/");
-              }
-            });
-        }
-      });
+            return res.status(403).send("<h1>400</h1><h2>Email already in use</h2>");
+          } else {
+            database.registerUserId(arr);
+            res.redirect("/");
+          }
+        });
+    } else {
+      database.getAdminEmail(email)
+        .then((value) => {
+          if (value) {
+            // Checks if email exist in admin data base
+            return res.status(403).send("<h1>400</h1><h2>Email already in use</h2>");
+          } else {
+            database.registerAdminId(arr);
+            res.redirect("/");
+          }
+        });
+    }
   });
-
   return router;
 };
