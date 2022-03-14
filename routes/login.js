@@ -12,10 +12,11 @@ module.exports = (db) => {
   router.get("/login", (req, res) => {
     console.log("cookie session for GET TEST: ", req.session.user_id);
     const accountEmail = req.session.user_id;
+    const is_admin = req.session.is_admin;
     console.log("accountemail cookie",accountEmail);
     database.getName(accountEmail).then((value) => {
       console.log("TEST NAME: ", value);
-      const templateVars = {value};
+      const templateVars = {value, is_admin};
       res.render("login", templateVars);
     });
   });
@@ -27,11 +28,13 @@ module.exports = (db) => {
     const email = temVar.email;
     const password = temVar.password;
     req.session.user_id = email;
+    req.session.is_admin = true;
 
     database.getUserEmail(email) // Checks helper funciton asynchronously
       .then((value) => {// Returns true or false
         console.log("value for getUserEmail", value);
         if (value) {
+          req.session.is_admin = null;
           return db
             .query(`SELECT password FROM users WHERE email = $1`, [email])
             .then((responds) => {
