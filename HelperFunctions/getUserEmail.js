@@ -46,16 +46,16 @@ const registerUserId = function(user) {
       .catch((err) => {
         console.log(err.message);
       });
+  } else {
+    return pool
+      .query(`INSERT INTO users (name, email, password, is_admin)
+    VALUES ($1, $2, $3, $4) RETURNING *;`, [user[0], user[1], user[2], user[3]])
+      .then((result) => {
+        return console.log('it worked');
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   }
-
-  return pool
-    .query(`INSERT INTO users (name, email, password, is_admin)
-  VALUES ($1, $2, $3, $4) RETURNING *;`, [user[0], user[1], user[2], user[3]])
-    .then((result) => {
-      return console.log('it worked');
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
 };
 exports.registerUserId = registerUserId;

@@ -21,7 +21,7 @@ module.exports = (db) => {
     const email = temVar.email;
     const password = temVar.password;
     req.session.user_id = email;
-    console.log(req.session)
+    console.log(req.session);
 
     database.getUserEmail(email) // Checks helper funciton asynchronously
       .then((value) => {// Returns true or false

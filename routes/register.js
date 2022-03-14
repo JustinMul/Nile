@@ -20,6 +20,7 @@ module.exports = (db) => {
     const hashedPassword = bcrypt.hashSync(password, 10);
     const isAdmin = temVar.isAdmin;
     const arr = [name, email, hashedPassword, isAdmin];
+    req.session.user_id = email;
 
     database.getUserEmail(email) // Checks helper funciton asynchronously
       .then((value) => {
