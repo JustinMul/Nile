@@ -7,6 +7,7 @@ const database = require('../HelperFunctions/getUserEmail.js');
 
 
 
+
 module.exports = (db) => {
 
   router.get("/login", (req, res) => {
@@ -19,16 +20,20 @@ module.exports = (db) => {
       const templateVars = {value, is_admin};
       res.render("login", templateVars);
     });
+
   });
 
   router.post("/login", (req, res) => {
     console.log('this is res', req.body);
 
+
     const temVar = req.body;
     const email = temVar.email;
     const password = temVar.password;
     req.session.user_id = email;
+
     req.session.is_admin = true;
+
 
     database.getUserEmail(email) // Checks helper funciton asynchronously
       .then((value) => {// Returns true or false

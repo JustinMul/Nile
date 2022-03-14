@@ -41,11 +41,13 @@
   padding: 5px;
 }
 
+
 .nav_logout {
   margin-right: 20px;
   padding: 5px;
   background-color: rgb(255, 180, 41);
 }
+
 
 .searchbar_container {
   // border: solid;
@@ -95,6 +97,7 @@
   font-family: 'Abril Fatface', cursive;
   font-weight: lighter;
 }
+
 
 .nav_logout:hover {
   border: solid;
@@ -148,11 +151,14 @@
   background-color: #f1f1f1;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  margin-right: 10px;
+  margin-left: 20px;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
   color: black;
+  font-size: small;
   font-size: 12px;
   padding: 6px 6px;
   text-decoration: none;

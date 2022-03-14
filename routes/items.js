@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const database = require('../HelperFunctions/insertItem.js');
+const data = require('../HelperFunctions/getUserEmail.js');
 
 const { Pool } = require("pg");
 const { string } = require('i/lib/util');
@@ -13,14 +14,24 @@ const pool = new Pool({
 
 module.exports = (db) => {
   router.get("/items", (req, res) => {
-    res.render("items");
+    console.log("cookie session for GET TEST: ", req.session.user_id);
+    const accountEmail = req.session.user_id;
+    const is_admin = req.session.is_admin;
+    console.log("accountemail cookie",accountEmail);
+    data.getName(accountEmail).then((value) => {
+      console.log("TEST NAME: ", value);
+      const templateVars = {value, is_admin};
+      res.render("items", templateVars);
+    });
   });
 
 
   router.post("/items", (req, res) => {
     console.log(req.session.user_id);
     console.log(req.body);
+
     let adminId;
+
 
     const temVar = req.body;
     const title = temVar.title;
