@@ -1,11 +1,5 @@
 const express = require('express');
 const router  = express.Router();
-<<<<<<< HEAD
-
-module.exports = (db) => {
-  router.get("/", (req, res) => {
-    res.render("index");
-=======
 const database = require('../HelperFunctions/getUserEmail.js');
 
 module.exports = (db) => {
@@ -17,20 +11,19 @@ module.exports = (db) => {
       //console.log("TEST NAME: ", value);
       //const templateVars = {value};
 
-   // });
+   //});
+
+
       db.query(`SELECT * FROM items;`)
       .then(data => {
         const templateVars = {items:data.rows}
-        //const item1 = templateVars[0]
-        //console.log(templateVars);
-        //console.log(templateVars)
+
         console.log('test',templateVars);
 
 
         res.render("index", templateVars);
 
     })
->>>>>>> item-feature
   });
   return router;
 };
