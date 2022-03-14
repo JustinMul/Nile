@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Antic+Slab&family=Bungee+Inline&family=Source+Sans+Pro&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/da166663b7.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -15,34 +14,7 @@
 </head>
 
 <body>
-  <nav class="navbar">
-    <div class="nav_button">
-      <a class="title" style="text-decoration:none;" href="/">Nile</a>
-      <% if (!value) {%>
-      <a style="text-decoration:none; color:#ffffff;" class="nav_register" href="/register">Register</a>
-      <a class="divider">|</a>
-      <a style="text-decoration:none; color:#ffffff;" class="nav_login" href="/login">Login</a>
-      <% } %>
-      <%if (value) {%>
-        <form action="/logout" method="POST">
-          <button class="nav_logout">Logout</button>
-        </form>
-      <%}%>
-      <div class="searchbar_container">
-      <textarea class="searchbar"></textarea>
-      <button class="search_button"><i class="fa-solid fa-magnifying-glass"></i></button>
-      </div>
-      <% if (value) {%>
-      <div class="dropdown">
-        <button class="dropbtn"><%= value%></button>
-        <div class="dropdown-content">
-          <a href="#">Wish List</a>
-          <a href="#">Messages</a>
-        </div>
-      </div>
-      <%}%>
-    </div>
-  </nav>
+  <%- include('partials/_header') %>
   <h1 class="indexPageTitle">Listing</h1>
 
   <div>
