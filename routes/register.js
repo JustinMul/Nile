@@ -12,7 +12,7 @@ module.exports = (db) => {
 
 
   router.post("/register", (req, res) => {
-    console.log('this is res', req.body);
+    // console.log('this is res', req.body);
     const temVar = req.body;
     const name = temVar.userName;
     const email = temVar.email;
