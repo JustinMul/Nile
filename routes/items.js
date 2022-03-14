@@ -21,8 +21,6 @@ module.exports = (db) => {
     const country = temVar.country;
     const city = temVar.city;
     const province = temVar.province;
-
-
   });
   return router;
 };
