@@ -1,40 +1,83 @@
+// load .env data into process.env
+require("dotenv").config();
+
+// Web server config
+const PORT = process.env.PORT || 8080;
+const sassMiddleware = require("./lib/sass-middleware");
+const express = require("express");
+const app = express();
+const morgan = require("morgan");
+const bcrypt = require('bcryptjs');
+const cookieSession = require('cookie-session');
+// const registerUserId = require('./routes/database');
+// const getUserWithEmail = require('./HelperFunctions/getUserEmail');
+
+
+// PG database client/connection setup
 const { Pool } = require("pg");
-const pool = new Pool({
-  user: 'labber',
-  password: 'labber',
-  host: 'localhost',
-  database: 'midterm'
+const dbParams = require("./lib/db.js");
+const db = new Pool(dbParams);
+db.connect();
+
+
+
+// Load the logger first so all (static) HTTP requests are logged to STDOUT
+// 'dev' = Concise output colored by response status for development use.
+//         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+app.use(morgan("dev"));
+
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true }));
+
+app.use(
+  "/styles",
+  sassMiddleware({
+    source: __dirname + "/styles",
+    destination: __dirname + "/public/styles",
+    isSass: false, // false => scss, true => sass
+  })
+);
+
+app.use(express.static("public"));
+
+// Separated Routes for each Resource
+// Note: Feel free to replace the example routes below with your own
+const usersRoutes = require("./routes/users");
+const widgetsRoutes = require("./routes/widgets");
+const registerRoutes = require("./routes/register"); // register
+const loginRoutes = require("./routes/login"); // Login
+const indexRoutes = require('./routes/index'); // Iindex
+const itemsRoutes = require('./routes/items'); // Items
+
+
+
+// Mount all resource routes
+// Note: Feel free to replace the example routes below with your own
+app.use("/api/users", usersRoutes(db));
+app.use("/api/widgets", widgetsRoutes(db));
+app.use("/", registerRoutes(db)); // register
+app.use("/", loginRoutes(db)); // Login
+app.use("/", indexRoutes(db)); // Index
+app.use("/", itemsRoutes(db)); //Items
+
+// Note: mount other resources here, using the same pattern above
+
+// Home page
+// Warning: avoid creating more routes in this file!
+// Separate them into separate routes files (see above).
+
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`);
 });
-const getUserEmail = function(arr) {
-  return pool
-    .query(`SELECT * FROM users WHERE email = $1`, [arr[1]])
-    .then((res) => {
-      if (res.rowCount > 0) {
-        console.log("Email used already", res.rowCount);
-        return true;
-      } else {
-        console.log("You are good", res.rowCount);
-        return false;
-      }
-    });
-};
 
-const registerUserId = function(user) {
-  if (user[3] === "Admin") {
-    user[3] = true;
-  } else {
-    user[3] = false;
-  }
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
 
-  return pool
-    .query(`INSERT INTO users (name, email, password, is_admin)
-  VALUES ($1, $2, $3, $4) RETURNING *;`, [user[0], user[1], user[2], user[3]])
-    .then((result) => {
-      return console.log('it worked');
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-};
+app.get("/item/:id", (req, res) => {
+  res.render("items");
+});
 
-module.exports = {getUserEmail, registerUserId};
+app.get("/edit", (req, res) => {
+  res.render("edit");
+});

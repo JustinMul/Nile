@@ -1,7 +1,8 @@
+// Register route - Jack v1.0
 const express = require('express');
 const router  = express.Router();
 const bcrypt = require('bcryptjs');
-const {getUserEmail, registerUserId} = require('../HelperFunctions/getUserEmail.js');
+const database = require('../HelperFunctions/getUserEmail.js');
 
 module.exports = (db) => {
 
@@ -9,7 +10,7 @@ module.exports = (db) => {
     res.render("register");
   });
 
-  // -------------------------------------------------------------------------------------------------------------
+
   router.post("/register", (req, res) => {
     console.log('this is res', req.body);
     const temVar = req.body;
@@ -20,18 +21,26 @@ module.exports = (db) => {
     const isAdmin = temVar.isAdmin;
     const arr = [name, email, hashedPassword, isAdmin];
 
-    getUserEmail(arr) // Checks helper funciton asynchronously
+    database.getUserEmail(email) // Checks helper funciton asynchronously
       .then((value) => {
+        console.log("value for getUserEmail", value);
         if (value) {
           // Checks if email exist in data base
           return res.status(403).send("<h1>400</h1><h2>Email already in use</h2>");
         } else {
-          console.log('getUserEmail: ', getUserEmail(arr));
-          registerUserId(arr);
-          res.redirect("/");
+          database.getAdminEmail(email)
+            .then((value) => {
+              if (value) {
+                // Checks if email exist in admin data base
+                return res.status(403).send("<h1>400</h1><h2>Email already in use</h2>");
+              } else {
+                database.registerUserId(arr);
+                res.redirect("/");
+              }
+            });
         }
       });
   });
-  // -------------------------------------------------------------------------------------------------------------
+
   return router;
 };
