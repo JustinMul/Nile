@@ -12,9 +12,13 @@ const createItemElement = function(listing) {
     </div>
     <div>${listing.user.handle}</div>
     </header>
+<<<<<<< HEAD
 
     <p>${escape(listing.content.text)}</p>
 
+=======
+    <p>${escape(listing.content.text)}</p>
+>>>>>>> item-feature
     <footer class = "tweetBottom">
     <div>${timeago.format(listing.created_at)}</div>
     <div class = 'icons'>

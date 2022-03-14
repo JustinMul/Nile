@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- <link footer stylesheet-carmen> -->
+  <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
+  <script src="https://kit.fontawesome.com/b8cfad3f17.js" crossorigin="anonymous"></script>
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -18,10 +21,25 @@
   <%- include('partials/_header') %>
   <h1 class="indexPageTitle">Listing</h1>
 
+<<<<<<< HEAD
   <div>
 
   </div>
 
+=======
+  <div class="listings">
+    <% for (let item of items) { %>
+
+      <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>
+      <a href="http://localhost:8080/<%=item.id%>">
+  <% } %>
+
+
+      </div>
+  </div>
+  <%- include('partials/_footer') %>
+>>>>>>> item-feature
 </body>
+
 
 </html>

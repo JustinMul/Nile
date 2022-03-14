@@ -97,4 +97,7 @@ INSERT INTO user_favorites (user_id, item_id)
 VALUES(12,2);
 INSERT INTO user_favorites (user_id, item_id)
 VALUES (10,5);
+<<<<<<< HEAD
 
+=======
+>>>>>>> item-feature
