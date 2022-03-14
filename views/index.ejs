@@ -2,20 +2,39 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <title>Home Page</title>
-
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Antic+Slab&family=Bungee+Inline&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/da166663b7.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <title>Home Page</title>
 </head>
 
 <body>
-  <%- include('partials/_header') %>
+  <nav class="navbar">
+    <div class="nav_button">
+      <a class="title" style="text-decoration:none;" href="/">Nile</a>
+      <a style="text-decoration:none; color:#ffffff;" class="nav_register" href="/register">Register</a>
+      <a class="divider">|</a>
+      <a style="text-decoration:none; color:#ffffff;" class="nav_login" href="/login">Login</a>
+      <div class="searchbar_container">
+      <textarea class="searchbar"></textarea>
+      <button class="search_button"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">User Account</button>
+        <div class="dropdown-content">
+          <a href="#">Wish List</a>
+          <a href="#">Messages</a>
+          <a href="#">Loggout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
   <h1 class="indexPageTitle">Listing</h1>
 
   <div>
