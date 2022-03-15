@@ -27,6 +27,7 @@ module.exports = (db) => {
     const password = temVar.password;
     const hashedPassword = bcrypt.hashSync(password, 10);
     const isAdmin = temVar.isAdmin;
+
     const arr = [name, email, hashedPassword];
     console.log("isAdmin", isAdmin);
     if (isAdmin === "User") {
