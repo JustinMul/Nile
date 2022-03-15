@@ -6,10 +6,10 @@ module.exports = (db) => {
   router.get("/items/:itemid", (req, res) => {
 
     const itemId = req.params.itemid;
-
+    req.session.itemid = itemId;
+    const cookieItemId = req.session.itemid;
     const accountEmail = req.session.user_id;
     const is_admin = req.session.is_admin;
-
 
     database.getName(accountEmail).then((value) => {
       console.log("TEST NAME: ", value);
@@ -25,6 +25,5 @@ module.exports = (db) => {
         });
     });
   });
-
- return router;
-}
+  return router;
+};

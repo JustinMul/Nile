@@ -61,6 +61,11 @@ const itemIdRoutes = require('./routes/itemId'); //ItemId
 const listingRoutes = require('./routes/listings'); //listings
 const editRoutes = require('./routes/edit');
 
+const favouriteRoutes = require('./routes/favourites'); // Favourites
+
+
+
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -71,9 +76,12 @@ app.use("/", loginRoutes(db)); // Login
 app.use("/", indexRoutes(db)); // Index
 app.use("/", itemsRoutes(db)); // Items
 app.use("/", logoutRoutes(db)); // Logout
-app.use("/", itemIdRoutes(db)); //ItemId
 app.use("/", listingRoutes(db)); //Listings
-app.use("/",editRoutes(db));//Edit
+app.use("/", editRoutes(db));//Edit
+app.use("/", itemIdRoutes(db)); // ItemId
+app.use("/", favouriteRoutes(db));
+
+
 
 
 // Note: mount other resources here, using the same pattern above

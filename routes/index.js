@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const database = require('../HelperFunctions/getUserEmail.js');
-const itemGet = require('../HelperFunctions/getAllItems.js')
+const itemGet = require('../HelperFunctions/getAllItems.js');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -16,8 +16,8 @@ module.exports = (db) => {
       // console.log("TEST NAME: ", value);
       db.query(`SELECT * FROM items ORDER BY id;`)
         .then(data => {
-          const tempVar = {items:data.rows, value, is_admin}
-          res.render("index", tempVar,);
+          const tempVar = {items:data.rows, value, is_admin};
+          res.render("index", tempVar);
 
         });
 
@@ -26,21 +26,3 @@ module.exports = (db) => {
   });
   return router;
 };
-
-
-
-
-
-
-// app.get("/", (req, res) => {
-//   db.query(sqlQuery)
-//   .then(data => {
-//     const templateVars = { items: data.rows }
-//     db.query(favsQuery, [req.session.user_id])
-//     .then(data => {
-//       templateVars.favourites = data.rows;
-//       console.log("favourites", templateVars.favourites);
-//       res.render("index", templateVars);
-//     })
-//   })
-// })
