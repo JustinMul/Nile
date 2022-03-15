@@ -35,7 +35,7 @@
         <p>AVAILABLE</p>
 
       <article>
-        <a href="/<%=item.id%>">
+        <a href="/items/<%=item.id%>">
       <div><%=(item.title)%></div>
     </a>
       <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>
@@ -44,7 +44,7 @@
 
       <%}%>
      <%if(item.sold) {%>
-        <a href="/<%=item.id%>">
+        <a href="/items/<%=item.id%>">
         <p >SOLD</p>
         <div><%=(item.title)%></div>
         <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>

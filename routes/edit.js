@@ -13,7 +13,7 @@ const pool = new Pool({
 });
 
 module.exports = (db) => {
-  router.get("/items", (req, res) => {
+  router.get("/items/:id/edit", (req, res) => {
     // console.log("cookie session for GET TEST: ", req.session.user_id);
     const accountEmail = req.session.user_id;
     const is_admin = req.session.is_admin;
@@ -26,7 +26,7 @@ module.exports = (db) => {
   });
 
 
-  router.post("/items", (req, res) => {
+  router.post("/items/:id/edit", (req, res) => {
     console.log(req.session.user_id);
     console.log(req.body);
 
@@ -59,18 +59,3 @@ module.exports = (db) => {
 
   return router;
 };
-
-let todaysDate = new Date();
-
-const convertDate = function(date) {
-  let yyyy = date.getFullYear().toString();
-  let mm = (date.getMonth() + 1).toString();
-  let dd  = date.getDate().toString();
-
-  let mmChars = mm.split('');
-  let ddChars = dd.split('');
-
-  return yyyy + '-' + (mmChars[1]?mm:"0"+ mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);
-}
-
-console.log(convertDate(todaysDate));

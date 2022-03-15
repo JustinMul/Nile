@@ -11,6 +11,7 @@ const getAllItems = function() {
     .query(`SELECT * FROM items`)
     .then((res) => {
       return res.rows;
+
     });
 };
 exports.getAllItems = getAllItems;

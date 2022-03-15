@@ -52,6 +52,23 @@
       <form action="/message" method="GET">
       <button type="message">Message Me</button>
      </form>
+
+     <% if (is_admin) { %>
+     <td>
+      <form method="GET" action="/items/<%=item.id%>/edit">
+        <button
+        type="submit"
+        class="blue"> edit </button>
+        </form>
+      </td>
+      <td>
+        <form method="POST" action="/items/<%=item.id%>/delete">
+        <button
+        type="submit"
+        class="danger hover"> Delete </button>
+        </form>
+      </td>
+      <% } %>
     </div>
     <%- include('partials/_footer') %>
 </body>

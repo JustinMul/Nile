@@ -58,8 +58,8 @@ const indexRoutes = require('./routes/index'); // Iindex
 const itemsRoutes = require('./routes/items'); // Items
 const logoutRoutes = require('./routes/logout'); // logout
 const itemIdRoutes = require('./routes/itemId'); //ItemId
-
-
+const listingRoutes = require('./routes/listings'); //listings
+const editRoutes = require('./routes/edit');
 
 
 // Mount all resource routes
@@ -72,7 +72,8 @@ app.use("/", indexRoutes(db)); // Index
 app.use("/", itemsRoutes(db)); // Items
 app.use("/", logoutRoutes(db)); // Logout
 app.use("/", itemIdRoutes(db)); //ItemId
-
+app.use("/", listingRoutes(db)); //Listings
+app.use("/",editRoutes(db));//Edit
 
 
 // Note: mount other resources here, using the same pattern above
@@ -86,6 +87,6 @@ app.listen(PORT, () => {
 });
 
 
-app.get("/edit", (req, res) => {
-  res.render("edit");
-});
+// app.get("/edit", (req, res) => {
+//   res.render("edit");
+// });

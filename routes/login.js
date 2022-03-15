@@ -34,7 +34,6 @@ module.exports = (db) => {
 
     req.session.is_admin = true;
 
-
     database.getUserEmail(email) // Checks helper funciton asynchronously
       .then((value) => {// Returns true or false
         console.log("value for getUserEmail", value);
