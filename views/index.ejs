@@ -23,14 +23,36 @@
 
 <body>
   <%- include('partials/_header') %>
-  <h1 class="indexPageTitle">Listing</h1>
+  <h1 class="indexPageTitle">Listings</h1>
 
 
   <div class="listings">
-    <% for (let item of items) { %>
 
+    <% for (let item of items) { %>
+      <%console.log(item.id);%>
+
+      <%if(!item.sold) {%>
+        <p>AVAILABLE</p>
+
+      <article>
+        <a href="/<%=item.id%>">
+      <div><%=(item.title)%></div>
+    </a>
       <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>
-      <a href="http://localhost:8080/<%=item.id%>">
+
+      <p><%=(item.cost)%></p>
+
+      <%}%>
+     <%if(item.sold) {%>
+        <a href="/<%=item.id%>">
+        <p >SOLD</p>
+        <div><%=(item.title)%></div>
+        <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>
+      </a>
+      <%}%>
+
+      </article>
+
   <% } %>
 
 

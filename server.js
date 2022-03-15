@@ -57,8 +57,7 @@ const loginRoutes = require("./routes/login"); // Login
 const indexRoutes = require('./routes/index'); // Iindex
 const itemsRoutes = require('./routes/items'); // Items
 const logoutRoutes = require('./routes/logout'); // logout
-
-const itemIdRoutes = require('./routes/itemId');//ItemId
+const itemIdRoutes = require('./routes/itemId'); //ItemId
 
 
 
@@ -72,7 +71,6 @@ app.use("/", loginRoutes(db)); // Login
 app.use("/", indexRoutes(db)); // Index
 app.use("/", itemsRoutes(db)); // Items
 app.use("/", logoutRoutes(db)); // Logout
-
 app.use("/", itemIdRoutes(db)); //ItemId
 
 
@@ -86,10 +84,6 @@ app.use("/", itemIdRoutes(db)); //ItemId
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
-
-
-
-
 
 
 app.get("/edit", (req, res) => {

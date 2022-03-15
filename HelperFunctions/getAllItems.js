@@ -10,7 +10,7 @@ const getAllItems = function() {
   return pool
     .query(`SELECT * FROM items`)
     .then((res) => {
-      console.log(res);
+      return res.rows;
     });
 };
-exports.getUserEmail = getAllItems;
+exports.getAllItems = getAllItems;
