@@ -73,6 +73,7 @@ const editRoutes = require('./routes/edit'); //edit
 const favouriteRoutes = require('./routes/favourites'); // Favourites
 const deleteRoutes = require('./routes/delete'); // delete
 const req = require("express/lib/request");
+const messageSessionRoutes = require('./routes/messageSessions'); // delete
 // const messageRoutes = require('./routes/message'); // delete)
 
 
@@ -94,6 +95,7 @@ app.use("/", editRoutes(db));//Edit
 app.use("/", itemIdRoutes(db)); // ItemId
 app.use("/", favouriteRoutes(db)); //favourites
 app.use("/", deleteRoutes(db)); // delete
+app.use("/", messageSessionRoutes(db)); //message session
 // app.use("/", messageRoutes(db)); // messages
 
 
