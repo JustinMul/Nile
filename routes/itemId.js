@@ -28,7 +28,7 @@ module.exports = (db) => {
             } else {
               const adminId = adminIdValue.id;
               console.log("datadatadatadatadatadatadatadatadatadata", adminId);
-              const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId};
+              const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId, adminEmail};
               res.render("itemid", templateVars);
             }
           });
