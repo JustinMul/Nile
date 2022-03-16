@@ -51,6 +51,7 @@ module.exports = (db) => {
       }).then((admin) => {
         const itemArr = [adminId.id,title,description,thumbnailPhotoUrl,coverPhotoUrl,cost,date,country,city,province];
         database.insertItem(itemArr);
+        res.redirect("/");
       });
 
   });

@@ -15,8 +15,8 @@ let adminId;
 //now working need to get visual output!
 module.exports = (db) => {
   router.get("/listings", (req, res) => {
-    console.log('this is ressssss', req.session);
-    console.log("res.session.is_adminres.session.is_admin",req.session.is_admin);
+    //console.log('this is ressssss', req.session);
+    //console.log("res.session.is_adminres.session.is_admin",req.session.is_admin);
     if (!req.session.is_admin) {
       res.redirect('/');
     } else {
@@ -31,7 +31,7 @@ module.exports = (db) => {
               const value = req.session.user_id;
               const is_admin = req.session.is_admin;
               const tempVar = {items: results.rows, value, is_admin};
-              console.log('this is temp vars', tempVar);
+              //console.log('this is temp vars', tempVar);
               res.render('listing', tempVar);
             });
         });

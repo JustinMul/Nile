@@ -13,8 +13,8 @@ module.exports = (db) => {
     const is_admin = req.session.is_admin;
     //console.log("accountemail cookie",accountEmail);
     database.getName(accountEmail).then((value) => {
-      console.log("I got here");
-      console.log("filter: ", value);
+      //console.log("I got here");
+      //console.log("filter: ", value);
 
       db.query(`SELECT * FROM items ORDER BY id`)
         .then(data => {
@@ -40,16 +40,16 @@ module.exports = (db) => {
 
     const accountEmail = req.session.user_id;
     const is_admin = req.session.is_admin;
-    console.log(req.session);
+    //console.log(req.session);
     database.getName(accountEmail).then((value) => {
 
 
       db.query(`SELECT * FROM items WHERE cost >= $1 And cost <= $2`, [min,max])
         .then(data => {
-          console.log("data",data);
+          //console.log("data",data);
           const templateVars = {items: data.rows, value, is_admin};
           res.render("filter", templateVars);
-          console.log(min);
+          //console.log(min);
         })
         .catch(err => {
           res
@@ -61,4 +61,3 @@ module.exports = (db) => {
 
  return router;
 }
-
