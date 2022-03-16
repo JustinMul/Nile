@@ -57,11 +57,13 @@
      </form>
 
      <% if (is_admin & adminId === item.admin_id) { %>
+
       <form method="GET" action="/items/<%=item.id%>/edit">
         <button
         type="submit"
         class="blue"> edit </button>
         </form>
+
       <td>
         <form method="POST" action="/items/<%=item.id%>/delete">
         <button

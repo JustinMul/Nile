@@ -10,16 +10,24 @@ const database = require('../HelperFunctions/getUserEmail.js');
 
 module.exports = (db) => {
 
+
   router.get("/login", (req, res) => {
-    //console.log("cookie session for GET TEST: ", req.session.user_id);
-    const accountEmail = req.session.user_id;
-    const is_admin = req.session.is_admin;
-    //console.log("accountemail cookie",accountEmail);
-    database.getName(accountEmail).then((value) => {
-      //console.log("TEST NAME: ", value);
-      const templateVars = {value, is_admin};
-      res.render("login", templateVars);
-    });
+
+
+    if (req.session.user_id === undefined) {
+      const accountEmail = req.session.user_id;
+      const is_admin = req.session.is_admin;
+      console.log("accountemail cookie",accountEmail);
+      database.getName(accountEmail).then((value) => {
+        console.log("TEST NAME: ", value);
+        const templateVars = {value, is_admin};
+        res.render("login", templateVars);
+      });
+    } else {
+      console.log('nonononononon')
+      res.redirect('/');
+    }
+
 
   });
 
@@ -33,7 +41,6 @@ module.exports = (db) => {
     req.session.user_id = email;
 
     req.session.is_admin = true;
-
 
     database.getUserEmail(email) // Checks helper funciton asynchronously
       .then((value) => {// Returns true or false
@@ -59,9 +66,12 @@ module.exports = (db) => {
                 return db
                   .query(`SELECT password FROM admins WHERE email = $1`, [email])
                   .then((responds) => {
+
                     const hashedPassword = responds.rows[0].password;
                     //console.log("stuff i guess", responds.rows[0].password, bcrypt.compareSync(password, hashedPassword));
                     if (bcrypt.compareSync(password, hashedPassword)) {
+                      req.session.adminEmail = email;
+                      const adminEmail = req.session.adminEmail;
                       res.redirect("/");
                     } else {
                       req.session.user_id = null;

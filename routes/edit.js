@@ -13,26 +13,28 @@ const pool = new Pool({
 });
 
 module.exports = (db) => {
-  router.get("/items", (req, res) => {
+  router.get("/items/:id/edit", (req, res) => {
     // console.log("cookie session for GET TEST: ", req.session.user_id);
     const accountEmail = req.session.user_id;
     const is_admin = req.session.is_admin;
+    console.log('this is req.session', req.session);
+    const cookieItemId = req.session.itemid;
+
     console.log("accountemail cookie",accountEmail);
+
     data.getName(accountEmail).then((value) => {
       // console.log("TEST NAME: ", value);
-      const templateVars = {value, is_admin};
-      res.render("items", templateVars);
+      const templateVars = {value, is_admin, cookieItemId};
+      res.render("edit", templateVars);
     });
   });
 
 
-  router.post("/items", (req, res) => {
+  router.post("/items/:id/edit", (req, res) => {
     console.log(req.session.user_id);
     console.log(req.body);
 
     let adminId;
-
-
     const temVar = req.body;
     const title = temVar.title;
     const description = temVar.description;
@@ -43,14 +45,23 @@ module.exports = (db) => {
     const country = temVar.country;
     const city = temVar.city;
     const province = temVar.province;
+    const cookieItemId = req.session.itemid;
 
     pool
-      .query(`SELECT id FROM admins WHERE email = $1`, [req.session.user_id])
+      .query(`Select id FROM admins WHERE email = $1`, [req.session.user_id])
       .then((res) => {
         return  adminId = res.rows[0];
       }).then((admin) => {
-        const itemArr = [adminId.id,title,description,thumbnailPhotoUrl,coverPhotoUrl,cost,date,country,city,province];
-        database.insertItem(itemArr);
+        const itemArr = [adminId.id,title,description,thumbnailPhotoUrl,coverPhotoUrl,cost,date,country,city,province,cookieItemId];
+        return pool
+          .query(`Update items
+          SET admin_id = $1, title = $2, description = $3, thumbnail_photo_url = $4, cover_photo_url = $5, cost = $6, date = $7, country =  $8, city = $9, province = $10 WHERE id = $11`, [itemArr[0], itemArr[1], itemArr[2], itemArr[3], itemArr[4], itemArr[5], itemArr[6], itemArr[7], itemArr[8], itemArr[9], itemArr[10]]
+          )
+          .then((data) => {
+            console.log('item was added edited');
+            res.redirect('/listings');
+          });
+
       });
 
   });
@@ -59,7 +70,6 @@ module.exports = (db) => {
 
   return router;
 };
-
 let todaysDate = new Date();
 
 const convertDate = function(date) {
