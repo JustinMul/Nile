@@ -57,7 +57,11 @@
         <p>AVAILABLE</p>
 
       <article>
+<<<<<<< HEAD
         <a href="/items/<%=item.id%>">
+=======
+        <a href="items/<%=item.id%>">
+>>>>>>> e35e2ad669e56aa76c70bb820a49117091bc2901
       <div><%=(item.title)%></div>
     </a>
       <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>
@@ -66,7 +70,9 @@
 
       <%}%>
      <%if(item.sold) {%>
+
         <a href="/items/<%=item.id%>">
+
         <p >SOLD</p>
         <div><%=(item.title)%></div>
         <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>
