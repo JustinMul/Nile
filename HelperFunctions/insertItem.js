@@ -19,3 +19,13 @@ const insertItem = function(itemInfo) {
     });
 };
 exports.insertItem = insertItem;
+
+const insertCookieItemId = function(itemId) {
+  return pool
+    .query(`INSERT INTO user_favorites (user_id, item_id)
+    VALUES ($1, $2) RETURNING *;`, [itemId[0], itemId[1]])
+    .then((res) => {
+      console.log('item was added successfully');
+    });
+};
+exports.insertCookieItemId = insertCookieItemId;

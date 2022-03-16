@@ -86,3 +86,31 @@ const getName = function(email) {
     });
 };
 exports.getName = getName;
+
+const getUserId = function(email) {
+  return pool
+    .query(`SELECT id FROM users WHERE email = $1`, [email])
+    .then((res) => {
+      return res.rows[0];
+    });
+};
+exports.getUserId = getUserId;
+
+
+const getUserFavCheck = function(arr) {
+  return pool
+    .query(`SELECT COUNT(*) FROM user_favorites WHERE user_id = $1 AND item_id = $2`, [arr[0], arr[1]])
+    .then((res) => {
+      return res.rows;
+    });
+};
+exports.getUserFavCheck = getUserFavCheck;
+
+const getAdminId = function(email) {
+  return pool
+    .query(`SELECT id FROM admins WHERE email = $1`, [email])
+    .then((res) => {
+      return res.rows[0];
+    });
+};
+exports.getAdminId = getAdminId;

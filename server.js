@@ -58,6 +58,7 @@ const indexRoutes = require('./routes/index'); // Iindex
 const itemsRoutes = require('./routes/items'); // Items
 const logoutRoutes = require('./routes/logout'); // logout
 const itemIdRoutes = require('./routes/itemId'); //ItemId
+const filterRoutes = require('./routes/filter'); //filter
 
 
 
@@ -72,6 +73,7 @@ app.use("/", indexRoutes(db)); // Index
 app.use("/", itemsRoutes(db)); // Items
 app.use("/", logoutRoutes(db)); // Logout
 app.use("/", itemIdRoutes(db)); //ItemId
+app.use("/", filterRoutes(db)); //filter
 
 
 
