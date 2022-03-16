@@ -29,7 +29,7 @@ module.exports = (db) => {
           ON user_favorites.item_id = items.id
          AND user_favorites.user_id = $1;`, [arr[0]])
             .then(data => {
-              console.log("data rows:", data.rows);
+              //console.log("data rows:", data.rows);
 
               const tempVar = {value, accountEmail, is_admin, items: data.rows};
               res.render("favourites", tempVar);
@@ -38,7 +38,7 @@ module.exports = (db) => {
       });
   });
   router.post("/favourites", (req, res) => {
-    console.log("req session post",req.body);
+    //console.log("req session post",req.body);
     res.redirect("/favourites");
   });
   return router;

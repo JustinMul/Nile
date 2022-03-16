@@ -7,12 +7,12 @@ const database = require('../HelperFunctions/getUserEmail.js');
 module.exports = (db) => {
 
   router.get("/register", (req, res) => {
-    console.log("cookie session for GET TEST: ", req.session.user_id);
+    //console.log("cookie session for GET TEST: ", req.session.user_id);
     const accountEmail = req.session.user_id;
     const is_admin = req.session.is_admin;
-    console.log("accountemail cookie",accountEmail);
+    //console.log("accountemail cookie",accountEmail);
     database.getName(accountEmail).then((value) => {
-      console.log("TEST NAME: ", value);
+      //console.log("TEST NAME: ", value);
       const templateVars = {value, is_admin};
       res.render("register", templateVars);
     });
@@ -29,17 +29,17 @@ module.exports = (db) => {
     const isAdmin = temVar.isAdmin;
 
     const arr = [name, email, hashedPassword];
-    console.log("isAdmin", isAdmin);
+    //console.log("isAdmin", isAdmin);
     if (isAdmin === "User") {
       database.getUserEmail(email) // Checks helper funciton asynchronously
         .then((value) => {
-          console.log("value for getUserEmail", value);
+          //console.log("value for getUserEmail", value);
           if (value) {
           // Checks if email exist user in data base
             return res.status(403).send("<h1>400</h1><h2>Email already in use</h2>");
           } else {
             database.registerUserId(arr);
-            res.redirect("/");
+            res.redirect("/login");
           }
         });
     } else {
@@ -50,7 +50,7 @@ module.exports = (db) => {
             return res.status(403).send("<h1>400</h1><h2>Email already in use</h2>");
           } else {
             database.registerAdminId(arr);
-            res.redirect("/");
+            res.redirect("/login");
           }
         });
     }

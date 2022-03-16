@@ -30,20 +30,22 @@
   <%- include('partials/_header') %>
 
   <!-- <filter price - carmen> -->
-    <form class="search-form d-flex mt-2" id="price-filter" action="/filter" method="post">
+    <div id = "filter">
+      <form class="search-form d-flex mt-2" id="price-filter" action="/filter" method="post">
+        <div>
+          <label for="min">
+          <input class="min-price"  id="min" type="text" required name="min" placeholder="Min" >
+          </label>
+        </div>
+        <div>
+          <label for="max">
+            <input class="max-price" id="max" type="text" required name="max" placeholder="Max" >
+          </label>
+        </div>
+        <button style="height: 2rem;" type="submit">search</button>
 
-      <label for="min">
-        <input class="min-price" type="text" name="min" placeholder="Min" >
-      </label>
-      <label for="max">
-        <input class="max-price" type="text" name="max" placeholder="Max" >
-      </label>
-      <button style="height: 2rem;" type="submit">
-        search
-      </button>
-
-    </form>
-
+      </form>
+    </div>
 <!-- <listings> -->
   <h1 class="indexPageTitle">Listings</h1>
   <div class="listings">

@@ -29,20 +29,22 @@
   <%- include('partials/_header') %>
 
    <!-- <filter price - carmen> -->
+  <div id = "filter">
     <form class="search-form d-flex mt-2" id="price-filter" action="/filter" method="post">
-
-      <label for="min">
-        <input class="min-price" type="text" name="min" placeholder="Min" >
-      </label>
-      <label for="max">
-        <input class="max-price" type="text" name="max" placeholder="Max" >
-      </label>
-      <button style="height: 2rem;" type="submit">
-        search
-      </button>
+      <div>
+        <label for="min">
+        <input class="min-price"  id="min" type="text" required name="min" placeholder="Min" >
+        </label>
+      </div>
+      <div>
+        <label for="max">
+          <input class="max-price" id="max" type="text" required name="max" placeholder="Max" >
+        </label>
+      </div>
+      <button style="height: 2rem;" type="submit">search</button>
 
     </form>
-
+  </div>
   <h1 class="indexPageTitle">Listings</h1>
 
 <!-- <listings> -->
@@ -55,7 +57,7 @@
         <p>AVAILABLE</p>
 
       <article>
-        <a href="/<%=item.id%>">
+        <a href="/items/<%=item.id%>">
       <div><%=(item.title)%></div>
     </a>
       <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>
@@ -64,7 +66,7 @@
 
       <%}%>
      <%if(item.sold) {%>
-        <a href="/<%=item.id%>">
+        <a href="/items/<%=item.id%>">
         <p >SOLD</p>
         <div><%=(item.title)%></div>
         <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>

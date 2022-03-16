@@ -3,22 +3,22 @@ const router  = express.Router();
 const database = require('../HelperFunctions/getUserEmail.js');
 
 module.exports = (db) => {
-  router.get("/items/:itemid", (req, res) => {
+  router.get("/items/:id", (req, res) => {
 
-    const itemId = req.params.itemid;
-    req.session.itemid = itemId;
-    const cookieItemId = req.session.itemid;
-    console.log(cookieItemId);
+    const id = req.params.id;
+    req.session.id = id;
+    const cookieItemId = req.session.id;
+    //console.log(cookieItemId);
     const accountEmail = req.session.user_id;
     const is_admin = req.session.is_admin;
     const adminEmail = req.session.adminEmail;
 
-    console.log('this is req.sessions', req.session)
-    console.log('this is admin emailemailemailemailemailemail', adminEmail);
+    //console.log('this is req.sessions', req.session)
+    //console.log('this is admin emailemailemailemailemailemail', adminEmail);
 
     database.getName(accountEmail).then((value) => {
-      console.log("TEST NAME: ", value);
-      db.query(`SELECT * FROM items WHERE id = $1`, [itemId])
+      //console.log("TEST NAME: ", value);
+      db.query(`SELECT * FROM items WHERE id = $1`, [id])
         .then(data => {
           database.getAdminId(adminEmail).then((adminIdValue)=>{
             if (!adminIdValue) {
@@ -27,7 +27,7 @@ module.exports = (db) => {
               res.render("itemid", templateVars);
             } else {
               const adminId = adminIdValue.id;
-              console.log("datadatadatadatadatadatadatadatadatadata", adminId);
+              //console.log("datadatadatadatadatadatadatadatadatadata", adminId);
               const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId};
               res.render("itemid", templateVars);
             }
