@@ -47,13 +47,16 @@
     <div id="thumbnail_photo_url">
       <h1 id="item-title" style="padding-top: 14px;"> <%= (item.description)%></h1>
     </div>
-    <form action="/favourites" method="GET">
-      <button class="wish_list"><i class="fa-solid fa-bookmark"> Add to Wish List</i></button>
-    </form>
+    <% if (accountEmail) { %>
+      <% if (!is_admin) { %>
+      <form action="/favourites" method="GET">
+        <button class="wish_list"><i class="fa-solid fa-bookmark"> Add to Wish List</i></button>
+      </form>
+      <% } %>
       <form action="/message" method="GET">
       <button type="message">Message Me</button>
      </form>
-
+     <% } %>
      <% if (is_admin & adminId === item.admin_id) { %>
 
       <form method="GET" action="/items/<%=item.id%>/edit">
