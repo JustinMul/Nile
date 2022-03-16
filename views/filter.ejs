@@ -27,67 +27,42 @@
 
 <body>
   <%- include('partials/_header') %>
+  <%- include('partials/_pricefilter') %>
 
-   <!-- <filter price - carmen> -->
-  <div id = "filter">
-    <form class="search-form d-flex mt-2" id="price-filter" action="/filter" method="post">
-      <div>
-        <label for="min">
-        <input class="min-price"  id="min" type="text" required name="min" placeholder="Min" >
-        </label>
-      </div>
-      <div>
-        <label for="max">
-          <input class="max-price" id="max" type="text" required name="max" placeholder="Max" >
-        </label>
-      </div>
-      <button style="height: 2rem;" type="submit">search</button>
-
-    </form>
-  </div>
-  <h1 class="indexPageTitle">Listings</h1>
 
 <!-- <listings> -->
+  <h1 class="indexPageTitle">Listings</h1>
   <div class="listings">
-
     <% for (let item of items) { %>
-      <%console.log(item.id);%>
-
-      <%if(!item.sold) {%>
-        <p>AVAILABLE</p>
-
       <article>
-<<<<<<< HEAD
-        <a href="/items/<%=item.id%>">
-=======
-        <a href="items/<%=item.id%>">
->>>>>>> e35e2ad669e56aa76c70bb820a49117091bc2901
-      <div><%=(item.title)%></div>
-    </a>
-      <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>
+        <div class="avaItems">
+        <%if(!item.sold) {%>
+          <div>
 
-      <p><%=(item.cost)%></p>
+            <span><%=(item.title)%></span>
+            <a href="/items/<%=item.id%>">
+            <img class="thumbnail_photo" alt="" src="<%= (item.thumbnail_photo_url)%>">
+            </a>
+          </div>
+          <p>$<%=(item.cost)%></p>
 
-      <%}%>
-     <%if(item.sold) {%>
+        <%}%>
+        </div>
+        <div class="soldItems">
+        <%if(item.sold) {%>
+          <div>
+            <a href="/items/<%=item.id%>"></a>
+            <span><%=(item.title)%></span>
+            <img class="thumbnail_photo" alt="" src="<%= (item.thumbnail_photo_url)%>">
 
-        <a href="/items/<%=item.id%>">
-
-        <p >SOLD</p>
-        <div><%=(item.title)%></div>
-        <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>
-      </a>
-      <%}%>
-
+          </div>
+          <p>SOLD</p>
+        <% } %>
+        </div>
       </article>
-
-  <% } %>
-
-
-      </div>
+    <% } %>
   </div>
   <%- include('partials/_footer') %>
-
 </body>
 
 

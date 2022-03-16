@@ -28,22 +28,26 @@ INSERT INTO admins (name, email, password) VALUES ('Pba', 'savan@yahoo.com', 'pa
 
 
 INSERT INTO items (admin_id, title, description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
-VALUES (1, 'shoe', 'black', '/image', '/image2', 100, '2022-03-11', FALSE, 'Canada', 'Toronto', 'ON');
+VALUES (1, '3.25" Suculenta Nirvana', 'Give it the right care, and these prickly plants will show you beautiful flowers.Feel free to message me.', 'https://images.unsplash.com/photo-1531668897726-0338038642f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=421&q=80', 'https://images.unsplash.com/photo-1531668897726-0338038642f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=421&q=80', 100, '2022-03-11', FALSE, 'Canada', 'Toronto', 'ON');
 
 INSERT INTO items (admin_id, title, description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
-VALUES (1, 'hat', 'white', '/image3', '/image4', 50, '2022-03-05', True, 'Canada', 'Montreal', 'QC');
+VALUES (1, '3.25" Kaya Cactus', 'Give it the right care, and these prickly plants will show you beautiful flowers.Feel free to message me.', 'https://images.unsplash.com/photo-1509587584298-0f3b3a3a1797?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=413&q=80', 'https://images.unsplash.com/photo-1509587584298-0f3b3a3a1797?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=413&q=80', 50, '2022-03-05', True, 'Canada', 'Montreal', 'QC');
 
 INSERT INTO items (admin_id, title, description,thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
-VALUES (3, 'shirt','', '/image5', '/image6', 80, '2022-01-15', FALSE, 'Canada', 'London', 'ON');
+VALUES (3, '3.25" Suculenta Nirvana', 'Give it the right care, and these prickly plants will show you beautiful flowers.Feel free to message me.', 'https://images.unsplash.com/photo-1525247862234-30193931fdf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80', 'https://images.unsplash.com/photo-1525247862234-30193931fdf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80', 80, '2022-01-15', FALSE, 'Canada', 'London', 'ON');
 
 INSERT INTO items (admin_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
-VALUES (4, 'dress', 'description','/image', '/image2', 25, '2022-03-09', FALSE, 'Canada', 'Toronto', 'ON');
+VALUES (4, 'flower pot', 'Give it the right care, and these prickly plants will show you beautiful flowers.Feel free to message me.','https://images.unsplash.com/photo-1619578975623-2e08173f2f92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', 'https://images.unsplash.com/photo-1619578975623-2e08173f2f92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', 25, '2022-03-09', FALSE, 'Canada', 'Toronto', 'ON');
 
 INSERT INTO items (admin_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
-VALUES (5, 'pants', 'demim', '/image3', '/image4', 65, '2022-02-05', True, 'Canada', 'Montreal', 'QC');
+VALUES (5, 'flowers bundles', 'Give it the right care, and these prickly plants will show you beautiful flowers.Feel free to message me.', 'https://images.unsplash.com/photo-1525247862234-30193931fdf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80', 'https://images.unsplash.com/photo-1525247862234-30193931fdf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80', 65, '2022-02-05', True, 'Canada', 'Montreal', 'QC');
 
 INSERT INTO items (admin_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
-VALUES (6, 'shirt', 'graphic text' , '/image5', '/image6', 80, '2022-01-15', True, 'Canada', 'London', 'ON');
+VALUES (6, 'lemon tree', 'Give it the right care, and these prickly plants will show you beautiful flowers.Feel free to message me.' , 'https://images.unsplash.com/photo-1484885192048-9696607347da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', 'https://images.unsplash.com/photo-1484885192048-9696607347da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80', 80, '2022-01-15', True, 'Canada', 'London', 'ON');
+
+INSERT INTO items (admin_id, title,description, thumbnail_photo_url, cover_photo_url, cost, date, sold, country, city, province)
+VALUES (5, 'lemon tree', 'Give it the right care, and these prickly plants will show you beautiful flowers.Feel free to message me.', 'https://images.unsplash.com/photo-1525247862234-30193931fdf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80', 'https://images.unsplash.com/photo-1525247862234-30193931fdf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=752&q=80', 65, '2022-02-05', True, 'Canada', 'Montreal', 'QC');
+
 
 
 INSERT INTO messages (user_id, item_id, message)
