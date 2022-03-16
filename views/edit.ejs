@@ -14,9 +14,9 @@
 </head>
 
 <body>
-
+  <%- include('partials/_header') %>
   <div class="container">
-    <form action="/items/:id/edit" method="POST">
+    <form action="/items/<%=cookieItemId%>/edit" method="POST">
     <h1>Edit Listing</h1>
     <label for="title"><b>Item Name</b></label>
     <input type="text" placeholder="title" name="title" required>

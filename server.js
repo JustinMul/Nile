@@ -59,9 +59,9 @@ const itemsRoutes = require('./routes/items'); // Items
 const logoutRoutes = require('./routes/logout'); // logout
 const itemIdRoutes = require('./routes/itemId'); //ItemId
 const listingRoutes = require('./routes/listings'); //listings
-const editRoutes = require('./routes/edit');
-
+const editRoutes = require('./routes/edit'); //edit
 const favouriteRoutes = require('./routes/favourites'); // Favourites
+const deleteRoutes = require('./routes/delete'); // delete
 
 
 
@@ -79,8 +79,8 @@ app.use("/", logoutRoutes(db)); // Logout
 app.use("/", listingRoutes(db)); //Listings
 app.use("/", editRoutes(db));//Edit
 app.use("/", itemIdRoutes(db)); // ItemId
-app.use("/", favouriteRoutes(db));
-
+app.use("/", favouriteRoutes(db)); //favourites
+app.use("/", deleteRoutes(db)); // delete
 
 
 

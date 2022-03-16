@@ -13,24 +13,7 @@ const pool = new Pool({
 });
 
 module.exports = (db) => {
-  router.get("/items/:id/edit", (req, res) => {
-    // console.log("cookie session for GET TEST: ", req.session.user_id);
-    const accountEmail = req.session.user_id;
-    const is_admin = req.session.is_admin;
-    console.log('this is req.session', req.session);
-    const cookieItemId = req.session.itemid;
-
-    console.log("accountemail cookie",accountEmail);
-
-    data.getName(accountEmail).then((value) => {
-      // console.log("TEST NAME: ", value);
-      const templateVars = {value, is_admin, cookieItemId};
-      res.render("edit", templateVars);
-    });
-  });
-
-
-  router.post("/items/:id/edit", (req, res) => {
+  router.post("/items/:id/delete", (req, res) => {
     console.log(req.session.user_id);
     console.log(req.body);
 
@@ -52,13 +35,14 @@ module.exports = (db) => {
       .then((res) => {
         return  adminId = res.rows[0];
       }).then((admin) => {
-        const itemArr = [adminId.id,title,description,thumbnailPhotoUrl,coverPhotoUrl,cost,date,country,city,province,cookieItemId];
+        const itemArr = [adminId.id,cookieItemId];
+        console.log("itemArritemArritemArritemArritemArr",itemArr);
         return pool
-          .query(`Update items
-          SET admin_id = $1, title = $2, description = $3, thumbnail_photo_url = $4, cover_photo_url = $5, cost = $6, date = $7, country =  $8, city = $9, province = $10 WHERE id = $11`, [itemArr[0], itemArr[1], itemArr[2], itemArr[3], itemArr[4], itemArr[5], itemArr[6], itemArr[7], itemArr[8], itemArr[9], itemArr[10]]
+          .query(`DELETE FROM items
+          WHERE admin_id = $1 and id = $2`, [itemArr[0], itemArr[1]]
           )
           .then((data) => {
-            console.log('item was added edited');
+            console.log('item was added deleted');
             res.redirect('/listings');
           });
 

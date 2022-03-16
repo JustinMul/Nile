@@ -56,14 +56,15 @@
       <button type="message">Message Me</button>
      </form>
 
-     <% if (is_admin) { %>
-     <td>
+     <% if (is_admin & adminId === item.admin_id) { %>
+
       <form method="GET" action="/items/<%=item.id%>/edit">
         <button
         type="submit"
         class="blue"> edit </button>
         </form>
-      </td>
+
+
       <td>
         <form method="POST" action="/items/<%=item.id%>/delete">
         <button

@@ -58,9 +58,12 @@ module.exports = (db) => {
                 return db
                   .query(`SELECT password FROM admins WHERE email = $1`, [email])
                   .then((responds) => {
+
                     const hashedPassword = responds.rows[0].password;
                     console.log("stuff i guess", responds.rows[0].password, bcrypt.compareSync(password, hashedPassword));
                     if (bcrypt.compareSync(password, hashedPassword)) {
+                      req.session.adminEmail = email;
+                      const adminEmail = req.session.adminEmail;
                       res.redirect("/");
                     } else {
                       req.session.user_id = null;

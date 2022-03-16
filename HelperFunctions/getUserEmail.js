@@ -105,3 +105,12 @@ const getUserFavCheck = function(arr) {
     });
 };
 exports.getUserFavCheck = getUserFavCheck;
+
+const getAdminId = function(email) {
+  return pool
+    .query(`SELECT id FROM admins WHERE email = $1`, [email])
+    .then((res) => {
+      return res.rows[0];
+    });
+};
+exports.getAdminId = getAdminId;

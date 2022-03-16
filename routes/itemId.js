@@ -8,15 +8,23 @@ module.exports = (db) => {
     const itemId = req.params.itemid;
     req.session.itemid = itemId;
     const cookieItemId = req.session.itemid;
+    console.log(cookieItemId);
     const accountEmail = req.session.user_id;
     const is_admin = req.session.is_admin;
+    const adminEmail = req.session.user_id;
+    console.log('this is req.sessions', req.session)
+    console.log('this is admin emailemailemailemailemailemail', adminEmail)
 
     database.getName(accountEmail).then((value) => {
       console.log("TEST NAME: ", value);
       db.query(`SELECT * FROM items WHERE id = $1`, [itemId])
         .then(data => {
-          const templateVars = {item: data.rows[0], value, is_admin};
-          res.render("itemid", templateVars);
+          database.getAdminId(adminEmail).then((adminIdValue)=>{
+            const adminId = adminIdValue.id;
+            console.log("datadatadatadatadatadatadatadatadatadata", adminId);
+            const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId };
+            res.render("itemid", templateVars);
+          });
         })
         .catch(err => {
           res
