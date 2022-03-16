@@ -58,6 +58,9 @@ const indexRoutes = require('./routes/index'); // Iindex
 const itemsRoutes = require('./routes/items'); // Items
 const logoutRoutes = require('./routes/logout'); // logout
 const itemIdRoutes = require('./routes/itemId'); //ItemId
+
+const filterRoutes = require('./routes/filter'); //filter
+
 const listingRoutes = require('./routes/listings'); //listings
 const editRoutes = require('./routes/edit'); //edit
 const favouriteRoutes = require('./routes/favourites'); // Favourites
@@ -76,11 +79,15 @@ app.use("/", loginRoutes(db)); // Login
 app.use("/", indexRoutes(db)); // Index
 app.use("/", itemsRoutes(db)); // Items
 app.use("/", logoutRoutes(db)); // Logout
+
+app.use("/", filterRoutes(db)); //filter
+
 app.use("/", listingRoutes(db)); //Listings
 app.use("/", editRoutes(db));//Edit
 app.use("/", itemIdRoutes(db)); // ItemId
 app.use("/", favouriteRoutes(db)); //favourites
 app.use("/", deleteRoutes(db)); // delete
+
 
 
 

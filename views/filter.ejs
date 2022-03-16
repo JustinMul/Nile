@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
   <script src="https://kit.fontawesome.com/da166663b7.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
@@ -14,11 +13,11 @@
   <script src="https://kit.fontawesome.com/b8cfad3f17.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/filter.css" type="text/css" />
 
 
 
 
-  <script defer type="text/javascript" src="/routes/filter.js"></script>
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
@@ -29,7 +28,7 @@
 <body>
   <%- include('partials/_header') %>
 
-  <!-- <filter price - carmen> -->
+   <!-- <filter price - carmen> -->
     <form class="search-form d-flex mt-2" id="price-filter" action="/filter" method="post">
 
       <label for="min">
@@ -44,42 +43,44 @@
 
     </form>
 
-<!-- <listings> -->
   <h1 class="indexPageTitle">Listings</h1>
+
+<!-- <listings> -->
   <div class="listings">
+
     <% for (let item of items) { %>
+      <%console.log(item.id);%>
+
+      <%if(!item.sold) {%>
+        <p>AVAILABLE</p>
+
       <article>
-        <%if(!item.sold) {%>
-          <p>AVAILABLE</p>
-          <a href="/items/<%=item.id%>">
-            <div><%=(item.title)%></div>
-          </a>
-<<<<<<< HEAD
-          <% } %>
-        </article>
-      <% } %>
-    </div>
-    <%- include('partials/_footer') %>
-  </body>
-=======
-          <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>
-          <p><%=(item.cost)%></p>
-        <%}%>
-        <%if(item.sold) {%>
-        <a href="/items/<%=item.id%>">
-          <p >SOLD</p>
-          <div><%=(item.title)%></div>
-          <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>
-        </a>
-        <% } %>
+        <a href="/<%=item.id%>">
+      <div><%=(item.title)%></div>
+    </a>
+      <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>
+
+      <p><%=(item.cost)%></p>
+
+      <%}%>
+     <%if(item.sold) {%>
+        <a href="/<%=item.id%>">
+        <p >SOLD</p>
+        <div><%=(item.title)%></div>
+        <h1 id="Thumbnail" style="padding-top: 14px;"> <%= (item.thumbnail_photo_url)%></h1>
+      </a>
+      <%}%>
+
       </article>
-    <% } %>
+
+  <% } %>
+
+
+      </div>
   </div>
   <%- include('partials/_footer') %>
+
 </body>
-
-
->>>>>>> 5636079f50b69487bbeaf3de981465f26262201b
 
 
 </html>
