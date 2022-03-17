@@ -12,9 +12,22 @@
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/allMessages.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/error.css" type="text/css" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+
+
+   <!-- External JS -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="jquery-3.6.0.min.js"></script>
+
+
+   <!-- CDN -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
 </head>
 
 <body>
@@ -22,7 +35,7 @@
   <%- include('partials/_header') %>
 
   <div class="container">
-    <form action="/login" method="POST">
+    <form id = 'loginButton' action="/login" method="POST">
     <h1>Login</h1>
 
     <label for="name"><b>Email Addres</b></label>
@@ -31,9 +44,12 @@
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
 
-    <button type="submit">Login</button>
+
+    <button type="submit" id="login-button">Login</button>
+    <p class = "alert" id = "loginError"></p>
   </form>
   </div>
 </body>
+<script type="text/javascript" src="public/scripts/app.js"></script>
 
 </html>
