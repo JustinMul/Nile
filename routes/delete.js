@@ -28,7 +28,8 @@ module.exports = (db) => {
     const country = temVar.country;
     const city = temVar.city;
     const province = temVar.province;
-    const cookieItemId = req.session.id;
+    const id = req.session.itemid;
+    const cookieItemId = req.session.itemid;
 
     pool
       .query(`Select id FROM admins WHERE email = $1`, [req.session.user_id])

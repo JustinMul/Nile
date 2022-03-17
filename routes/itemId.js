@@ -14,8 +14,7 @@ module.exports = (db) => {
     const adminEmail = req.session.adminEmail;
 
     //console.log('this is req.sessions', req.session)
-    //console.log('this is admin emailemailemailemailemailemail', adminEmail);
-
+    //console.log('this is admin emailemailemailemailemailemail', adminEmail)
     database.getName(accountEmail).then((value) => {
       //console.log("TEST NAME: ", value);
       db.query(`SELECT * FROM items WHERE id = $1`, [id])
