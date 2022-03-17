@@ -30,7 +30,6 @@ module.exports = (db) => {
     const province = temVar.province;
     const id =req.session.itemid;
     const cookieItemId = req.session.itemid;
-    console.log(req.session)
 
     pool
       .query(`Select id FROM admins WHERE email = $1`, [req.session.user_id])

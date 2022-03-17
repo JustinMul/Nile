@@ -76,9 +76,6 @@ const req = require("express/lib/request");
 const messageLogRoutes = require('./routes/smsLog'); // message log
 
 
-
-
-
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
@@ -96,8 +93,6 @@ app.use("/", itemIdRoutes(db)); // ItemId
 app.use("/", favouriteRoutes(db)); //favourites
 app.use("/", deleteRoutes(db)); // delete
 app.use("/", messageLogRoutes(db)); // messages log
-
-
 
 
 // Note: mount other resources here, using the same pattern above

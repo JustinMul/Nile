@@ -24,13 +24,15 @@ module.exports = (db) => {
             if (!adminIdValue) {
               adminId = null;
               const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId, accountEmail};
+
               res.render("itemid", templateVars);
             } else {
               const adminId = adminIdValue.id;
 
               console.log("datadatadatadatadatadatadatadatadatadata", adminId);
-              const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId, adminEmail, accountEmail};
 
+              const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId, adminEmail, accountEmail};
+              console.log('this is temp vars', templateVars)
               res.render("itemid", templateVars);
             }
           });
