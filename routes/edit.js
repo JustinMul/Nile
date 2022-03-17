@@ -18,7 +18,9 @@ module.exports = (db) => {
     const accountEmail = req.session.user_id;
     const is_admin = req.session.is_admin;
     //console.log('this is req.session', req.session);
-    const cookieItemId = req.session.id;
+
+    // const id = req.session.itemid;
+    const cookieItemId = req.session.itemid;
 
     //console.log("accountemail cookie",accountEmail);
 
@@ -46,16 +48,15 @@ module.exports = (db) => {
     const city = temVar.city;
     const province = temVar.province;
     const cookieItemId = req.session.itemid;
-
+    console.log("cookieItemId ofr edits: ", cookieItemId);
     pool
       .query(`Select id FROM admins WHERE email = $1`, [req.session.user_id])
-      .then((res) => {
-        return  adminId = res.rows[0];
-      }).then((admin) => {
-        const itemArr = [adminId.id,title,description,thumbnailPhotoUrl,coverPhotoUrl,cost,date,country,city,province,cookieItemId];
+      .then((result) => {
+        adminId = result.rows[0].id;
+        const itemArr = [adminId,title,description,thumbnailPhotoUrl,coverPhotoUrl,cost,date,country,city,province,cookieItemId];
         return pool
           .query(`Update items
-          SET admin_id = $1, title = $2, description = $3, thumbnail_photo_url = $4, cover_photo_url = $5, cost = $6, date = $7, country =  $8, city = $9, province = $10 WHERE id = $11`, [itemArr[0], itemArr[1], itemArr[2], itemArr[3], itemArr[4], itemArr[5], itemArr[6], itemArr[7], itemArr[8], itemArr[9], itemArr[10]]
+          SET admin_id = $1, title = $2, description = $3, thumbnail_photo_url = $4, cover_photo_url = $5, cost = $6, date = $7, country =  $8, city = $9, province = $10 WHERE id = $11;`, [itemArr[0], itemArr[1], itemArr[2], itemArr[3], itemArr[4], itemArr[5], itemArr[6], itemArr[7], itemArr[8], itemArr[9], itemArr[10]]
           )
           .then((data) => {
             //console.log('item was added edited');

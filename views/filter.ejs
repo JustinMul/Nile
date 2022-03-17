@@ -13,7 +13,9 @@
   <script src="https://kit.fontawesome.com/b8cfad3f17.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/filter.css" type="text/css" />
+
+  <link rel="stylesheet" href="/styles/index.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/pricefilter.css" type="text/css" />
 
 
 
@@ -31,36 +33,48 @@
 
 
 <!-- <listings> -->
-  <h1 class="indexPageTitle">Listings</h1>
+
   <div class="listings">
+    <div class="titleContainer">
+      <span id="listTitle">Spring is here</span>
+      <h1 class="pageTitle">Shop Plants & Flowers</h1>
+    </div>
+    <div class ="product">
     <% for (let item of items) { %>
       <article>
         <div class="avaItems">
         <%if(!item.sold) {%>
-          <div>
+          <div class="singleItem">
 
             <span><%=(item.title)%></span>
+
             <a href="/items/<%=item.id%>">
-            <img class="thumbnail_photo" alt="" src="<%= (item.thumbnail_photo_url)%>">
+            <img class="thumbnail" alt="" src="<%= (item.thumbnail_photo_url)%>">
             </a>
+
+
+            <p>$<%=(item.cost)%></p>
           </div>
-          <p>$<%=(item.cost)%></p>
+
 
         <%}%>
         </div>
         <div class="soldItems">
         <%if(item.sold) {%>
-          <div>
-            <a href="/items/<%=item.id%>"></a>
+          <div class="singleItem">
             <span><%=(item.title)%></span>
-            <img class="thumbnail_photo" alt="" src="<%= (item.thumbnail_photo_url)%>">
-
+            <a href="/items/<%=item.id%>">
+            <img class="thumbnail" alt="" src="<%= (item.thumbnail_photo_url)%>">
+            </a>
+            <p>SOLD</p>
           </div>
-          <p>SOLD</p>
+
         <% } %>
         </div>
+
       </article>
     <% } %>
+    </div>
   </div>
   <%- include('partials/_footer') %>
 </body>

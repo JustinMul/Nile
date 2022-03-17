@@ -22,12 +22,13 @@ module.exports = (db) => {
           database.getAdminId(adminEmail).then((adminIdValue)=>{
             if (!adminIdValue) {
               adminId = null;
+              console.log("data.rows[0]data.rows[0]data.rows[0]",data.rows[0]);
               const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId, accountEmail};
               res.render("itemid", templateVars);
             } else {
               const adminId = adminIdValue.id;
+              console.log("data.rows[0]data.rows[0]data.rows[0]",data.rows[0]);
 
-              console.log("datadatadatadatadatadatadatadatadatadata", adminId);
               const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId, adminEmail, accountEmail};
 
               res.render("itemid", templateVars);

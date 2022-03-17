@@ -40,7 +40,7 @@
   <div class="listings">
     <div class="titleContainer">
       <span id="listTitle">Spring is here</span>
-      <h1 class="indexPageTitle">Shop Plants & Flowers</h1>
+      <h1 class="pageTitle">Shop Plants & Flowers</h1>
     </div>
     <div class ="product">
     <% for (let item of items) { %>
@@ -50,9 +50,12 @@
           <div class="singleItem">
 
             <span><%=(item.title)%></span>
+
             <a href="/items/<%=item.id%>">
             <img class="thumbnail" alt="" src="<%= (item.thumbnail_photo_url)%>">
             </a>
+
+
             <p>$<%=(item.cost)%></p>
           </div>
 
@@ -62,9 +65,10 @@
         <div class="soldItems">
         <%if(item.sold) {%>
           <div class="singleItem">
-            <a href="/items/<%=item.id%>"></a>
             <span><%=(item.title)%></span>
+            <a href="/items/<%=item.id%>">
             <img class="thumbnail" alt="" src="<%= (item.thumbnail_photo_url)%>">
+            </a>
             <p>SOLD</p>
           </div>
 
