@@ -17,6 +17,7 @@
     </style>
   </head>
   <body>
+    <%- include('partials/_header') %>
     <ul id="messages"></ul>
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
@@ -47,11 +48,6 @@
 
     var item = document.createElement('li');
     item.textContent = `${msgInfo[2]}`;
-
-    // for each item in messages table
-    //if useremail user_email & item = item_id
-
-
 
     messages.appendChild(item);
 

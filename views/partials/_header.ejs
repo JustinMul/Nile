@@ -30,7 +30,7 @@
         </form>
       <%}%>
       <div class="searchbar_container">
-      <textarea class="searchbar"></textarea>
+      <textarea class="searchbar"> </textarea>
       <button class="search_button"><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
       <% if (value) {%>
@@ -40,9 +40,9 @@
           <%if (!is_admin) {%>
           <a href="/favourites">Wish List</a>
           <%}%>
-          <a href="#">Messages</a>
+          <a href="http://localhost:8080/message">Messages</a>
           <%if (is_admin) {%>
-            <a href="">Listings</a>
+            <a href="http://localhost:8080/listings">Listings</a>
             <%}%>
         </div>
       </div>

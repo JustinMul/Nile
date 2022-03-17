@@ -73,8 +73,8 @@ const editRoutes = require('./routes/edit'); //edit
 const favouriteRoutes = require('./routes/favourites'); // Favourites
 const deleteRoutes = require('./routes/delete'); // delete
 const req = require("express/lib/request");
-const messageSessionRoutes = require('./routes/messageSessions'); // delete
-// const messageRoutes = require('./routes/message'); // delete)
+const messageLogRoutes = require('./routes/smsLog'); // message log
+
 
 
 
@@ -95,8 +95,8 @@ app.use("/", editRoutes(db));//Edit
 app.use("/", itemIdRoutes(db)); // ItemId
 app.use("/", favouriteRoutes(db)); //favourites
 app.use("/", deleteRoutes(db)); // delete
-app.use("/", messageSessionRoutes(db)); //message session
-// app.use("/", messageRoutes(db)); // messages
+app.use("/", messageLogRoutes(db)); // messages log
+
 
 
 
@@ -116,6 +116,8 @@ app.get('/message', (req, res) => {
   console.log("adminEmailadminEmailadminEmailadminEmail: ", adminEmail);
   const cookieItemId = req.session.itemid;
   const arr = [accountEmail, cookieItemId];
+  const value = req.session.user_id;
+  const is_admin = req.session.is_admin;
   Message.insertMessage(arr);
   db.query(`SELECT admins.email
           FROM admins
@@ -125,12 +127,10 @@ app.get('/message', (req, res) => {
     .then(data => {
       console.log("data.rowsdata.rowsdata.rows", data.rows);
       // const tempVar = {user_Email: accountEmail, is_admin, items: data.rows};
-      res.render("message", {user_Email: accountEmail, item_Id: cookieItemId});
+      res.render("message", {user_Email: accountEmail, item_Id: cookieItemId, value:value, is_admin:is_admin});
     });
 
-  // const tempVar = {user_Email: accountEmail, admin_Email: adminEmail};
-  // const user = "alsdkjh";
-  // res.render('message', tempVar);
+
 });
 
 app.post('/message', (req, res) => {

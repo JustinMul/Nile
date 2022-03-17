@@ -13,16 +13,22 @@ const pool = new Pool({
 });
 
 module.exports = (db) => {
+
   router.get("/items", (req, res) => {
-    // console.log("cookie session for GET TEST: ", req.session.user_id);
-    const accountEmail = req.session.user_id;
-    const is_admin = req.session.is_admin;
-    console.log("accountemail cookie",accountEmail);
-    data.getName(accountEmail).then((value) => {
-      // console.log("TEST NAME: ", value);
-      const templateVars = {value, is_admin};
-      res.render("items", templateVars);
-    });
+    if (req.session.is_admin) {
+      // console.log("cookie session for GET TEST: ", req.session.user_id);
+      const accountEmail = req.session.user_id;
+      const is_admin = req.session.is_admin;
+      console.log("accountemail cookie",accountEmail);
+      data.getName(accountEmail).then((value) => {
+        console.log("TEST NAME: ", value);
+        const templateVars = {value, is_admin};
+        res.render("items", templateVars);
+      });
+    } else {
+      res.redirect("/");
+    }
+
   });
 
 
