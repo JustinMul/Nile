@@ -73,7 +73,7 @@ const editRoutes = require('./routes/edit'); //edit
 const favouriteRoutes = require('./routes/favourites'); // Favourites
 const deleteRoutes = require('./routes/delete'); // delete
 const req = require("express/lib/request");
-// const messageRoutes = require('./routes/message'); // delete)
+const messageLogRoutes = require('./routes/smsLog'); // message log
 
 
 
@@ -94,7 +94,7 @@ app.use("/", editRoutes(db));//Edit
 app.use("/", itemIdRoutes(db)); // ItemId
 app.use("/", favouriteRoutes(db)); //favourites
 app.use("/", deleteRoutes(db)); // delete
-// app.use("/", messageRoutes(db)); // messages
+app.use("/", messageLogRoutes(db)); // messages log
 
 
 
@@ -126,9 +126,7 @@ app.get('/message', (req, res) => {
       res.render("message", {user_Email: accountEmail, item_Id: cookieItemId});
     });
 
-  // const tempVar = {user_Email: accountEmail, admin_Email: adminEmail};
-  // const user = "alsdkjh";
-  // res.render('message', tempVar);
+
 });
 
 app.post('/message', (req, res) => {
