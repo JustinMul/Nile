@@ -19,10 +19,7 @@
 <body>
   <h1>Chat Log</h1>
   <%for (let smsLog of sms) {%>
-
-    <div class = 'messageBox'>
-      <p><%=smsLog.id%></p>
-    </div>
+      <p><%=smsLog.messages_session_id%></p>
   <% } %>
 
   <script src="/scripts/smsLogScript.js"></script>
