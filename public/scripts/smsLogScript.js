@@ -27,7 +27,7 @@ const rendermessage = function(message) {
 
 
 const loadMessages =  function() {
-  Pool.query(`SELECT id FROM messages_session`).then((data) => {
+  Pool.query(`SELECT messages_session_id FROM messages_log`).then((data) => {
     console.log("datadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadata: ", data.rows)
     rendermessage(data);
   });

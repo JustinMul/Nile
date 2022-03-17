@@ -12,11 +12,11 @@ module.exports = (db) => {
     const is_admin = req.session.is_admin;
     const adminEmail = req.session.adminEmail;
 
-    db.query(`SELECT message FROM messages_log`).then((data) => {
+    db.query(`SELECT messages_session_id FROM messages_log`).then((data) => {
       console.log("datadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadata: ", data.rows);
 
       const templateVars = {sms: data.rows};
-
+      console.log(templateVars  )
       res.render("smsLog", templateVars);
     });
   });
