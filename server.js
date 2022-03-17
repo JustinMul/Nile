@@ -14,6 +14,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 const Message = require('./public/scripts/insertMessage');
+const database = require('./HelperFunctions/getUserEmail');
 // const registerUserId = require('./routes/database');
 // const getUserWithEmail = require('./HelperFunctions/getUserEmail');
 
@@ -111,7 +112,7 @@ app.get('/message', (req, res) => {
   console.log("adminEmailadminEmailadminEmailadminEmail: ", adminEmail);
   const cookieItemId = req.session.itemid;
   const arr = [accountEmail, cookieItemId];
-  const value = req.session.user_id;
+  const val = req.session.user_id;
   const is_admin = req.session.is_admin;
   Message.insertMessage(arr);
   db.query(`SELECT admins.email
@@ -122,11 +123,30 @@ app.get('/message', (req, res) => {
     .then(data => {
       console.log("data.rowsdata.rowsdata.rows", data.rows);
       // const tempVar = {user_Email: accountEmail, is_admin, items: data.rows};
-      res.render("message", {user_Email: accountEmail, item_Id: cookieItemId, value:value, is_admin:is_admin});
+
+
+      const id = req.params.id;
+      // req.session.itemid = id;
+      const cookieItemId = req.session.itemid;
+      const accountEmail = req.session.user_id;
+
+      console.log("Cookie ID TEST: ",cookieItemId);
+      db.query(`SELECT * FROM messages_log
+      JOIN messages_session on messages_session.id = messages_log.messages_session_id`).then((result) => {
+        // console.log("data: ", data.rows);
+        const smsData = result.rows;
+
+        console.log("smsDatasmsDatasmsData", smsData);
+        database.getName(val)
+          .then((value)=>{
+            res.render("message", {user_Email: accountEmail, item_Id: cookieItemId, value:value, is_admin:is_admin, sms: smsData});
+
+          });
+
+      });
     });
-
-
 });
+
 
 app.post('/message', (req, res) => {
   console.log("TESTING WORKED!!!");
