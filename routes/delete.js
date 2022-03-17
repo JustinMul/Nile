@@ -28,7 +28,7 @@ module.exports = (db) => {
     const country = temVar.country;
     const city = temVar.city;
     const province = temVar.province;
-    const id =req.session.itemid;
+    const id = req.session.itemid;
     const cookieItemId = req.session.itemid;
 
     pool
@@ -37,13 +37,13 @@ module.exports = (db) => {
         return  adminId = res.rows[0];
       }).then((admin) => {
         const itemArr = [adminId.id,cookieItemId];
-        console.log("itemArritemArritemArritemArritemArr",itemArr);
+        //console.log("itemArritemArritemArritemArritemArr",itemArr);
         return pool
           .query(`DELETE FROM items
           WHERE admin_id = $1 and id = $2`, [itemArr[0], itemArr[1]]
           )
           .then((data) => {
-            console.log('item was added deleted');
+            //console.log('item was added deleted');
             res.redirect('/listings');
           });
 

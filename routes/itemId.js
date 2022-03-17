@@ -14,8 +14,7 @@ module.exports = (db) => {
     const adminEmail = req.session.adminEmail;
 
     //console.log('this is req.sessions', req.session)
-    //console.log('this is admin emailemailemailemailemailemail', adminEmail);
-
+    //console.log('this is admin emailemailemailemailemailemail', adminEmail)
     database.getName(accountEmail).then((value) => {
       //console.log("TEST NAME: ", value);
       db.query(`SELECT * FROM items WHERE id = $1`, [id])
@@ -23,16 +22,15 @@ module.exports = (db) => {
           database.getAdminId(adminEmail).then((adminIdValue)=>{
             if (!adminIdValue) {
               adminId = null;
+              console.log("data.rows[0]data.rows[0]data.rows[0]",data.rows[0]);
               const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId, accountEmail};
-
               res.render("itemid", templateVars);
             } else {
               const adminId = adminIdValue.id;
-
-              console.log("datadatadatadatadatadatadatadatadatadata", adminId);
+              console.log("data.rows[0]data.rows[0]data.rows[0]",data.rows[0]);
 
               const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId, adminEmail, accountEmail};
-              console.log('this is temp vars', templateVars)
+
               res.render("itemid", templateVars);
             }
           });
