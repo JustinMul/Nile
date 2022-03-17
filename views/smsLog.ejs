@@ -10,8 +10,15 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- CDN -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="jquery-3.6.0.min.js"></script>
 
+   <!-- from tweeter -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+    <!-- App JS -->
+
+    <!-- CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    <link rel="stylesheet" href="/styles/allMessages.css"/>
 
 
@@ -19,8 +26,17 @@
 <body>
   <h1>Chat Log</h1>
   <%for (let smsLog of sms) {%>
-      <p><%=smsLog.messages_session_id%></p>
-  <% } %>
+<div>
+      <a href="/message">there is a new message from <%=smsLog.user_email%> for item <%=smsLog.item_id%>!</a>
+
+</div>
+<%}%>
+
+<div class = 'messageBox'>
+
+
+
+</div>
 
   <script src="/scripts/smsLogScript.js"></script>
 </body>

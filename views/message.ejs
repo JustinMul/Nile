@@ -18,6 +18,9 @@
   </head>
   <body>
     <%- include('partials/_header') %>
+    <%for (let smsLog of sms) {%>
+      <p><%=smsLog.message%> </p>
+    <% } %>
     <ul id="messages"></ul>
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
@@ -36,7 +39,7 @@
     e.preventDefault();
     var item = document.createElement('li');
     const msg = input.value;
-    item.textContent = '<%=user_Email%>:' + msg;
+    item.textContent = '<%=user_Email%>: ' + msg;
 
     const arr = ['<%=user_Email%>', '<%=item_Id%>', item.textContent];
     if (msg) {
@@ -45,7 +48,7 @@
     }
   });
   socket.on('chat message', function(msgInfo) {
-
+    console.log(msgInfo)
     var item = document.createElement('li');
     item.textContent = `${msgInfo[2]}`;
 
