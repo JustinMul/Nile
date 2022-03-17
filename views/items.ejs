@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/items.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -18,34 +20,42 @@
   <div class="container">
     <form action="/items" method="POST">
     <h1>List Item To Be Sold</h1>
-    <label for="title"><b>Item Name</b></label>
-    <input type="text" placeholder="title" name="title" required>
-
-    <label for="description"><b>description</b></label>
-    <input type="text" placeholder="Enter description" name="description" required>
-
-    <label for="thumbnail_photo_url"><b>Thumbnail Photo URL</b></label>
-    <input type="text" placeholder="Enter Thumbnail Photo URL" name="thumbnail_photo_url" required>
-
-    <label for="cover_photo_url"><b>Cover Photo URL</b></label>
-    <input type="text" placeholder="Enter URL" name="cover_photo_url" required>
-
-    <label for="cost"><b>Price</b></label>
-    <input type="text" placeholder="Enter Price" name="cost" required>
-
-    <label for="country"><b>country</b></label>
-    <input type="text" placeholder="Enter country" name="country" required>
-
-    <label for="city"><b>city</b></label>
-    <input type="text" placeholder="Enter city" name="city" required>
-
-    <label for="province"><b>province</b></label>
-    <input type="text" placeholder="Enter province" name="province" required>
-
+    <div class="item-form">
+      <label for="title"><b>Item Name</b></label>
+      <input type="text" placeholder="title" name="title" required>
+    </div>
+    <div class="item-form">
+      <label for="description"><b>description</b></label>
+      <input type="text" placeholder="Enter description" name="description" required>
+    </div>
+    <div class="item-form">
+      <label for="thumbnail_photo_url"><b>Thumbnail Photo URL</b></label>
+      <input type="text" placeholder="Enter Thumbnail Photo URL" name="thumbnail_photo_url" required>
+    </div>
+    <div class="item-form">
+      <label for="cover_photo_url"><b>Cover Photo URL</b></label>
+      <input type="text" placeholder="Enter URL" name="cover_photo_url" required>
+    </div>
+    <div class="item-form">
+      <label for="cost"><b>Price</b></label>
+      <input type="text" placeholder="Enter Price" name="cost" required>
+    </div>
+    <div class="item-form">
+      <label for="country"><b>country</b></label>
+      <input type="text" placeholder="Enter country" name="country" required>
+    </div>
+    <div class="item-form">
+      <label for="city"><b>city</b></label>
+      <input type="text" placeholder="Enter city" name="city" required>
+    </div>
+    <div class="item-form">
+      <label for="province"><b>province</b></label>
+      <input type="text" placeholder="Enter province" name="province" required>
+    </div>
     <button type="submit">Submit</button>
   </form>
   </div>
 </body>
-
+<%- include('partials/_footer') %>
 
 </html>

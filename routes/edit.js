@@ -18,7 +18,9 @@ module.exports = (db) => {
     const accountEmail = req.session.user_id;
     const is_admin = req.session.is_admin;
     //console.log('this is req.session', req.session);
-    const cookieItemId = req.session.id;
+
+    const id =req.session.itemid;
+    const cookieItemId = req.session.itemid;
 
     //console.log("accountemail cookie",accountEmail);
 

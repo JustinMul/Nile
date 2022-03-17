@@ -6,8 +6,8 @@ module.exports = (db) => {
   router.get("/items/:id", (req, res) => {
 
     const id = req.params.id;
-    req.session.id = id;
-    const cookieItemId = req.session.id;
+    req.session.itemid = id;
+    const cookieItemId = req.session.itemid;
     //console.log(cookieItemId);
     const accountEmail = req.session.user_id;
     const is_admin = req.session.is_admin;
@@ -23,13 +23,13 @@ module.exports = (db) => {
           database.getAdminId(adminEmail).then((adminIdValue)=>{
             if (!adminIdValue) {
               adminId = null;
-              const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId};
+              const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId, accountEmail};
               res.render("itemid", templateVars);
             } else {
               const adminId = adminIdValue.id;
 
               console.log("datadatadatadatadatadatadatadatadatadata", adminId);
-              const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId, adminEmail};
+              const templateVars = {item: data.rows[0], value, is_admin, cookieItemId, adminId, adminEmail, accountEmail};
 
               res.render("itemid", templateVars);
             }
