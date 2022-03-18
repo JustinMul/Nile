@@ -14,6 +14,18 @@ remove/edit items from the site
 mark items as SOLD!
 send a message via app, email, or text back on negotiations in buying the said item
 
+## Screenshots
+!["Screenshot of home page"](https://github.com/JustinMul/midterm/blob/master/docs/homepage.png)
+
+!["Screenshot of home page"](https://github.com/JustinMul/midterm/blob/master/docs/login.png)
+
+!["Screenshot of home page"](https://github.com/JustinMul/midterm/blob/master/docs/register.png)
+
+!["Screenshot of home page"](https://github.com/JustinMul/midterm/blob/master/docs/addListing.png)
+
+!["Screenshot of home page"](https://github.com/JustinMul/midterm/blob/master/docs/item-detail.png)
+
+
 ## Dependencies
 
 - Node 10.x or above
