@@ -1,10 +1,10 @@
-@import url(/Users/carmen/lighthouse/midterm/styles/_navbar.css);
-@import url(/Users/carmen/lighthouse/midterm/styles/_pricefilter.css);
+@import url(/Users/justinmulroney/bootcamp/midterm/styles/_navbar.css);
+@import url(/Users/justinmulroney/bootcamp/midterm/styles/_pricefilter.css);
 body {
   background-color: white;
 }
 
-/*product display:home-page, listings-page, filter-page*/
+/*product display:home-page, listings-page, filter-page,wish-list page*/
 .listings {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -186,6 +186,7 @@ footer .social-links ul i:hover {
 .detailPage .item-title {
   margin-left: 2em;
   margin-bottom: 10px;
+  font-size: 50px;
 }
 
 .detailPage .item-detail {

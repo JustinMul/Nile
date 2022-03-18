@@ -137,15 +137,31 @@ footer {
 
 
 /* specific item page*/
-
+.item_Id_Body{
+  background: url('https://wallpaperforu.com/wp-content/uploads/2021/08/Wallpaper-Green-Leaf-With-White-Background-Plant-Fern-F271920x1080.jpg')
+}
 .detailPage {
   @include column();
   margin-top: 2em;
 
 
   .item-title {
-    margin-left: 2em;
+    margin-left: .5em;
     margin-bottom: 10px;
+    font-size: 5em;
+  }
+  .price {
+    margin-top: 2em;
+    font-size: 2em;
+  }
+
+  #location {
+    font-size: 1.5em;
+  }
+
+  .description {
+    font-size: 2em;
+    overflow-wrap: break-word;
   }
 
   .item-detail {
@@ -155,6 +171,10 @@ footer {
     gap:3em;
 
 
+    .full-container {
+      display: flex;
+      flex-direction: row;
+    }
     .container-left {
       @include column();
       margin-left: 2em;
