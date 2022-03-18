@@ -39,7 +39,7 @@
           <p class = price>Price:$<%=(item.cost)%></p>
           <%}%>
         <%if(item.sold) {%>
-          <p>SOLD</p>
+          <p class = 'sold'>SOLD</p>
           <% } %>
         </div>
 
@@ -78,11 +78,15 @@
             </form>
             <% } %>
 
+
          <% } %>
 
 
         <div>
           <% if (is_admin & adminId === item.admin_id) { %>
+            <form action="/message" method="GET">
+              <button type="message">Message Me</button>
+            </form>
 
           <form method="GET" action="/items/<%=item.id%>/edit">
             <button
