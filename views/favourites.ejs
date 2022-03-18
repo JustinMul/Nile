@@ -53,19 +53,12 @@
             </a>
             <p>SOLD</p>
           </div>
-          <script>
-            window.onload = function() {
-                if(!window.location.hash) {
-                    window.location = window.location + '#loaded';
-                    window.location.reload();
-                }
-            }
-            </script>
+
         <% } %>
         </div>
 
       </article>
-      <form  action="/favourites/<%=item.id%>/delete" method="POST">
+      <form  action="favourites/<%=item.id%>/delete" method="POST">
         <button>Delete</button>
       </form>
     <% } %>

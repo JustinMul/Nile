@@ -5,10 +5,11 @@ const data = require('../HelperFunctions/getUserEmail.js');
 
 
 module.exports = (db) => {
-  router.post("/favourites/<%=item.id%>/delete", (req, res) => {
+  router.post("favourites/:id/delete", (req, res) => {
 
 
     const cookieItemId = req.session.itemid;
+    const id = req.session.itemid;
     const accountEmail = req.session.user_id;
 
     data.getUserId(accountEmail)
