@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +8,7 @@
   <script src="https://kit.fontawesome.com/da166663b7.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -30,7 +31,7 @@
         </form>
       <%}%>
       <div class="searchbar_container">
-      <textarea class="searchbar"></textarea>
+      <textarea class="searchbar"> </textarea>
       <button class="search_button"><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
       <% if (value) {%>
@@ -40,9 +41,10 @@
           <%if (!is_admin) {%>
           <a href="/favourites">Wish List</a>
           <%}%>
-          <a href="#">Messages</a>
+          <a href="/smsLog">Messages</a>
           <%if (is_admin) {%>
-            <a href="">Listings</a>
+            <a href="/items">Sell</a>
+            <a href="/listings">My Listings</a>
             <%}%>
         </div>
       </div>

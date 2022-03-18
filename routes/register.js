@@ -10,12 +10,16 @@ module.exports = (db) => {
     //console.log("cookie session for GET TEST: ", req.session.user_id);
     const accountEmail = req.session.user_id;
     const is_admin = req.session.is_admin;
+    if (req.session.user_id === undefined) {
     //console.log("accountemail cookie",accountEmail);
-    database.getName(accountEmail).then((value) => {
-      //console.log("TEST NAME: ", value);
-      const templateVars = {value, is_admin};
-      res.render("register", templateVars);
-    });
+      database.getName(accountEmail).then((value) => {
+        //console.log("TEST NAME: ", value);
+        const templateVars = {value, is_admin};
+        res.render("register", templateVars);
+      });
+    } else {
+      res.redirect('/');
+    }
   });
 
 

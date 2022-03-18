@@ -18,7 +18,7 @@ module.exports = (db) => {
     database.getName(accountEmail).then((value) => {
       // console.log("TEST NAME: ", value);
 
-      db.query(`SELECT * FROM items ORDER BY id;`)
+      db.query(`SELECT * FROM items ORDER BY id DESC;`)
         .then(data => {
           const tempVar = {items:data.rows, value, is_admin};
           res.render("index", tempVar);
