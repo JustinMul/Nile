@@ -18,16 +18,26 @@ module.exports = (db) => {
     const accountEmail = req.session.user_id;
     const is_admin = req.session.is_admin;
     //console.log('this is req.session', req.session);
+<<<<<<< HEAD
 
     // const id = req.session.itemid;
+=======
+    const id = req.params.id;
+    req.session.itemid = id;
+    //const id = req.session.itemid;
+>>>>>>> edit-style
     const cookieItemId = req.session.itemid;
 
     //console.log("accountemail cookie",accountEmail);
 
     data.getName(accountEmail).then((value) => {
+      db.query(`SELECT * FROM items WHERE id = $1`, [id])
+      .then(data => {
       // console.log("TEST NAME: ", value);
-      const templateVars = {value, is_admin, cookieItemId};
+      const templateVars = {item: data.rows[0],value, is_admin, cookieItemId};
       res.render("edit", templateVars);
+
+    });
     });
   });
 
@@ -47,16 +57,19 @@ module.exports = (db) => {
     const country = temVar.country;
     const city = temVar.city;
     const province = temVar.province;
+    const sold = temVar.sold;
     const cookieItemId = req.session.itemid;
     console.log("cookieItemId ofr edits: ", cookieItemId);
     pool
       .query(`Select id FROM admins WHERE email = $1`, [req.session.user_id])
       .then((result) => {
         adminId = result.rows[0].id;
-        const itemArr = [adminId,title,description,thumbnailPhotoUrl,coverPhotoUrl,cost,date,country,city,province,cookieItemId];
+
+        const itemArr = [adminId,title,description,thumbnailPhotoUrl,coverPhotoUrl,cost,date,country,city,province,sold,cookieItemId];
         return pool
           .query(`Update items
-          SET admin_id = $1, title = $2, description = $3, thumbnail_photo_url = $4, cover_photo_url = $5, cost = $6, date = $7, country =  $8, city = $9, province = $10 WHERE id = $11;`, [itemArr[0], itemArr[1], itemArr[2], itemArr[3], itemArr[4], itemArr[5], itemArr[6], itemArr[7], itemArr[8], itemArr[9], itemArr[10]]
+          SET admin_id = $1, title = $2, description = $3, thumbnail_photo_url = $4, cover_photo_url = $5, cost = $6, date = $7, country =  $8, city = $9, province = $10, sold = $11 WHERE id = $12;`, [itemArr[0], itemArr[1], itemArr[2], itemArr[3], itemArr[4], itemArr[5], itemArr[6], itemArr[7], itemArr[8], itemArr[9], itemArr[10],itemArr[11]]
+
           )
           .then((data) => {
             //console.log('item was added edited');

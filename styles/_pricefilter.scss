@@ -1,0 +1,39 @@
+/* pricefilter */
+
+.filter {
+  display: flex;
+  position: absolute;
+  margin-top: 3em;
+  margin-left: 1em;
+  .min-form {
+    margin-bottom: 8px;
+  }
+  .max-from {
+    margin-bottom: 10px;
+
+  }
+  .p {
+    text-align:left;
+    color:#d8983d;
+    font-weight: 600;
+  }
+
+  #min {
+    border-radius: 5px 5px;
+    width:100px;
+  }
+  #max {
+    border-radius: 5px 5px;
+    width:100px;
+  }
+
+
+}
+
+
+
+
+
+
+
+
