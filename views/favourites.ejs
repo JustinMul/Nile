@@ -16,6 +16,8 @@
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -51,15 +53,26 @@
             </a>
             <p>SOLD</p>
           </div>
-
+          <script>
+            window.onload = function() {
+                if(!window.location.hash) {
+                    window.location = window.location + '#loaded';
+                    window.location.reload();
+                }
+            }
+            </script>
         <% } %>
         </div>
 
       </article>
+      <form  action="/favourites/<%=item.id%>/delete" method="POST">
+        <button>Delete</button>
+      </form>
     <% } %>
     </div>
   </div>
   <%- include('partials/_footer') %>
+
 </body>
 
 

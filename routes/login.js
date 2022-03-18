@@ -23,7 +23,6 @@ module.exports = (db) => {
         res.render("login", templateVars);
       });
     } else {
-      console.log('nonononononon')
       res.redirect('/');
     }
 
@@ -50,7 +49,7 @@ module.exports = (db) => {
               if (bcrypt.compareSync(password, hashedPassword)) {
                 res.redirect("/");
               } else {
-                req.session.user_id = null;
+                req.session = null;
                 res.status(403).send("<h1>403</h1><h2>Email or password does not exist or incorrect</h2>");
               }
             });
@@ -68,12 +67,12 @@ module.exports = (db) => {
                       const adminEmail = req.session.adminEmail;
                       res.redirect("/");
                     } else {
-                      req.session.user_id = null;
+                      req.session = null;
                       res.status(403).send("<h1>403</h1><h2>Email or password does not exist or incorrect</h2>");
                     }
                   });
               } else {
-                req.session.user_id = null;
+                req.session = null;
                 res.status(403).send("<h1>400</h1><h2>Email or password does not exist or incorrect</h2>");
               }
             });

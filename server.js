@@ -75,7 +75,7 @@ const favouriteRoutes = require('./routes/favourites'); // Favourites
 const deleteRoutes = require('./routes/delete'); // delete
 const req = require("express/lib/request");
 const messageLogRoutes = require('./routes/smsLog'); // message log
-
+const deleteFavouritesRoutes = require('./routes/deleteFavourites'); // delete Favourites
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -94,7 +94,7 @@ app.use("/", itemIdRoutes(db)); // ItemId
 app.use("/", favouriteRoutes(db)); //favourites
 app.use("/", deleteRoutes(db)); // delete
 app.use("/", messageLogRoutes(db)); // messages log
-
+app.use("/", deleteFavouritesRoutes(db)); // delete Favourites
 
 // Note: mount other resources here, using the same pattern above
 
