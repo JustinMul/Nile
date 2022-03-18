@@ -49,12 +49,15 @@
           <% } %>
           </div>
         </article>
+        <form  action="favourites/<%=item.id%>/delete" method="POST">
+          <button>Delete</button>
+        </form>
       <% } %>
       </div>
     </div>
-  </div>
-  <%- include('partials/_footer') %>
-</body>
+    <%- include('partials/_footer') %>
+
+  </body>
 
 
-</html>
+  </html>

@@ -34,13 +34,10 @@ module.exports = (db) => {
 
               const tempVar = {value, accountEmail, is_admin, items: data.rows};
               res.render("favourites", tempVar);
+
             });
         });
       });
-  });
-  router.post("/favourites", (req, res) => {
-    //console.log("req session post",req.body);
-    res.redirect("/favourites");
   });
   return router;
 };

@@ -1,8 +1,6 @@
 /* eslint-env jquery */
 /* eslint-env browser */
-
-const { Pool } = require("pg/lib");
-
+const load = require('../../HelperFunctions/loadMessage');
 
 const createMessageElement = function(message) {
 
@@ -18,22 +16,25 @@ const rendermessage = function(message) {
 
   let allmessage;
   console.log('this is message', message);
+  const $form = $(".messageBox");
+  $form.empty();
   for (const objs of message) {
-    allmessage = $(".messageBox").append(createMessageElement(objs));
+    const sms = createMessageElement(objs);
+    $form.append(sms);
   }
 
   return allmessage;
 };
 
 
-const loadMessages =  function() {
-  Pool.query(`SELECT id FROM messages_session`).then((data) => {
-    console.log("datadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadata: ", data.rows)
+
+
+console.log("did this workdid this workdid this workdid this workdid this work");
+
+$(() => {
+  load.loadMessages().then((data)=> {
     rendermessage(data);
   });
-};
-console.log("did this workdid this workdid this workdid this workdid this work")
-loadMessages();
 
-
+});
 
