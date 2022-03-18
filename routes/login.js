@@ -4,13 +4,7 @@ const router  = express.Router();
 const bcrypt = require('bcryptjs');
 const database = require('../HelperFunctions/getUserEmail.js');
 
-
-
-
-
 module.exports = (db) => {
-
-
   router.get("/login", (req, res) => {
 
     if (req.session.user_id === undefined) {
@@ -25,8 +19,6 @@ module.exports = (db) => {
     } else {
       res.redirect('/');
     }
-
-
   });
 
   router.post("/login", (req, res) => {

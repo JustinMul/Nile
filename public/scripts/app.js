@@ -1,12 +1,6 @@
 /* eslint-env jquery */
 /* eslint-env browser */
 
-// email password
-// compare the email to database and then check password
-// execute apicall .then response what you do with these reponses is where jquery comes in
-// if 403 sliddown error
-
-console.log("--------------AJA read----------");
 $(()=> {
 
   $("#loginButton").submit(function(event) {

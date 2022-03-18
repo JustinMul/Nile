@@ -7,13 +7,10 @@ const database = require('../HelperFunctions/getUserEmail.js');
 module.exports = (db) => {
 
   router.get("/register", (req, res) => {
-    //console.log("cookie session for GET TEST: ", req.session.user_id);
     const accountEmail = req.session.user_id;
     const is_admin = req.session.is_admin;
     if (req.session.user_id === undefined) {
-    //console.log("accountemail cookie",accountEmail);
       database.getName(accountEmail).then((value) => {
-        //console.log("TEST NAME: ", value);
         const templateVars = {value, is_admin};
         res.render("register", templateVars);
       });
@@ -22,9 +19,7 @@ module.exports = (db) => {
     }
   });
 
-
   router.post("/register", (req, res) => {
-    // console.log('this is res', req.body);
     const temVar = req.body;
     const name = temVar.userName;
     const email = temVar.email;
@@ -33,11 +28,9 @@ module.exports = (db) => {
     const isAdmin = temVar.isAdmin;
 
     const arr = [name, email, hashedPassword];
-    //console.log("isAdmin", isAdmin);
     if (isAdmin === "User") {
       database.getUserEmail(email) // Checks helper funciton asynchronously
         .then((value) => {
-          //console.log("value for getUserEmail", value);
           if (value) {
           // Checks if email exist user in data base
             return res.status(403).send("<h1>400</h1><h2>Email already in use</h2>");

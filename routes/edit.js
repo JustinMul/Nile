@@ -1,6 +1,5 @@
 const express = require('express');
 const router  = express.Router();
-const database = require('../HelperFunctions/insertItem.js');
 const data = require('../HelperFunctions/getUserEmail.js');
 
 const { Pool } = require("pg");
@@ -14,34 +13,24 @@ const pool = new Pool({
 
 module.exports = (db) => {
   router.get("/items/:id/edit", (req, res) => {
-    // console.log("cookie session for GET TEST: ", req.session.user_id);
     const accountEmail = req.session.user_id;
     const is_admin = req.session.is_admin;
-    //console.log('this is req.session', req.session);
-
     const id = req.params.id;
     req.session.itemid = id;
-    //const id = req.session.itemid;
-
     const cookieItemId = req.session.itemid;
-
-    //console.log("accountemail cookie",accountEmail);
 
     data.getName(accountEmail).then((value) => {
       db.query(`SELECT * FROM items WHERE id = $1`, [id])
-      .then(data => {
-      // console.log("TEST NAME: ", value);
-      const templateVars = {item: data.rows[0],value, is_admin, cookieItemId};
-      res.render("edit", templateVars);
+        .then(data => {
+          const templateVars = {item: data.rows[0],value, is_admin, cookieItemId};
+          res.render("edit", templateVars);
 
-    });
+        });
     });
   });
 
 
   router.post("/items/:id/edit", (req, res) => {
-    //console.log(req.session.user_id);
-    //console.log(req.body);
 
     let adminId;
     const temVar = req.body;
@@ -91,7 +80,6 @@ const convertDate = function(date) {
   let mmChars = mm.split('');
   let ddChars = dd.split('');
 
-  return yyyy + '-' + (mmChars[1]?mm:"0"+ mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);
+  return yyyy + '-' + (mmChars[1] ? mm : "0" + mmChars[0]) + '-' + (ddChars[1] ? dd : "0" + ddChars[0]);
 };
 
-//console.log(convertDate(todaysDate));
