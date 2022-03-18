@@ -56,16 +56,30 @@
         <div id="description">
           <span id="item-des"> <%= (item.description)%></span>
         </div>
-        <% if (accountEmail) { %>
+
           <% if (!is_admin) { %>
-          <form action="/favourites" method="GET">
-            <button class="wish_list"><i class="fa-solid fa-bookmark"> Add to Wish List</i></button>
-          </form>
-          <% } %>
-          <form action="/message" method="GET">
-          <button type="message">Message Me</button>
-         </form>
+
+            <% if (!accountEmail) { %>
+            <form action="/login" method="GET">
+              <button class="wish_list"><i class="fa-solid fa-bookmark"> Add to Wish List</i></button>
+            </form>
+
+            <form action="/login" method="GET">
+              <button type="message">Message Me</button>
+            </form>
+            <% } %>
+
+            <% if (accountEmail) { %>
+            <form action="/favourites" method="GET">
+              <button class="wish_list"><i class="fa-solid fa-bookmark"> Add to Wish List</i></button>
+            </form>
+            <form action="/message" method="GET">
+              <button type="message">Message Me</button>
+            </form>
+            <% } %>
+
          <% } %>
+
 
         <div>
           <% if (is_admin & adminId === item.admin_id) { %>
