@@ -11,15 +11,10 @@ const bcrypt = require('bcryptjs');
 const cookieSession = require('cookie-session');
 const http = require('http');
 const server = http.createServer(app);
-const { Server } = require("socket.io");
+const { Server } = require("socket.io"); //setting up a server with socket io
 const io = new Server(server);
 const Message = require('./public/scripts/insertMessage');
 const database = require('./HelperFunctions/getUserEmail');
-// const registerUserId = require('./routes/database');
-// const getUserWithEmail = require('./HelperFunctions/getUserEmail');
-
-//setting up a server with socket io
-
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -74,8 +69,6 @@ const editRoutes = require('./routes/edit'); //edit
 const favouriteRoutes = require('./routes/favourites'); // Favourites
 const deleteRoutes = require('./routes/delete'); // delete
 const req = require("express/lib/request");
-const messageLogRoutes = require('./routes/smsLog'); // message log
-const deleteFavouritesRoutes = require('./routes/deleteFavourites'); // delete Favourites
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -93,8 +86,6 @@ app.use("/", editRoutes(db));//Edit
 app.use("/", itemIdRoutes(db)); // ItemId
 app.use("/", favouriteRoutes(db)); //favourites
 app.use("/", deleteRoutes(db)); // delete
-app.use("/", messageLogRoutes(db)); // messages log
-app.use("/", deleteFavouritesRoutes(db)); // delete Favourites
 
 // Note: mount other resources here, using the same pattern above
 
@@ -109,7 +100,6 @@ app.get('/message', (req, res) => {
   const accountEmail = req.session.user_id;
   // find the item ID
   const adminEmail = req.session.adminEmail;
-  console.log("adminEmailadminEmailadminEmailadminEmail: ", adminEmail);
   const cookieItemId = req.session.itemid;
   const arr = [accountEmail, cookieItemId];
   const val = req.session.user_id;
@@ -121,12 +111,8 @@ app.get('/message', (req, res) => {
           ON items.admin_id = admins.id
           AND items.id = $1;`, [cookieItemId])
     .then(data => {
-      console.log("data.rowsdata.rowsdata.rows", data.rows);
-      // const tempVar = {user_Email: accountEmail, is_admin, items: data.rows};
-
 
       const id = req.params.id;
-      // req.session.itemid = id;
       const cookieItemId = req.session.itemid;
       const accountEmail = req.session.user_id;
 
@@ -169,7 +155,6 @@ io.on('connection', (socket) => {
         const logging = [msg[2], data];
         Message.insertMessageLog(logging);
       });
-//we need helper function
   });
 });
 io.emit('some event', { someProperty: 'some value', otherProperty: 'other value' }); // This will emit the event to all connected sockets

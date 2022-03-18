@@ -12,11 +12,8 @@ const pool = new Pool({
 
 let adminId;
 
-//now working need to get visual output!
 module.exports = (db) => {
   router.get("/listings", (req, res) => {
-    //console.log('this is ressssss', req.session);
-    //console.log("res.session.is_adminres.session.is_admin",req.session.is_admin);
     if (!req.session.is_admin) {
       res.redirect('/');
     } else {
@@ -27,16 +24,13 @@ module.exports = (db) => {
         }).then((data) => {
           pool.query(`SELECT * FROM items WHERE admin_id = $1;`, [adminId.id])
             .then((results) => {
-
               const value = req.session.user_id;
               const is_admin = req.session.is_admin;
               const tempVar = {items: results.rows, value, is_admin};
-              //console.log('this is temp vars', tempVar);
               res.render('listing', tempVar);
             });
         });
     }
   });
-
   return router;
 };

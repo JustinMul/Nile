@@ -2,7 +2,6 @@
 @import "./navbar.css";
 @import "./pricefilter.css";
 
-
 $TextFamily :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 @mixin flexCenter() {
@@ -28,6 +27,7 @@ $TextFamily :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 body {
+
   background-color: white;
 
   background-image: url('http://www.transparenttextures.com/patterns/tex2res3.png');

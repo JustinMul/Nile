@@ -13,7 +13,6 @@ const pool = new Pool({
 });
 
 module.exports = (db) => {
-
   router.get("/items", (req, res) => {
     if (req.session.is_admin) {
       // console.log("cookie session for GET TEST: ", req.session.user_id);
@@ -28,17 +27,13 @@ module.exports = (db) => {
     } else {
       res.redirect("/");
     }
-
   });
-
 
   router.post("/items", (req, res) => {
     console.log(req.session.user_id);
     console.log(req.body);
 
     let adminId;
-
-
     const temVar = req.body;
     const title = temVar.title;
     const description = temVar.description;
@@ -59,11 +54,7 @@ module.exports = (db) => {
         database.insertItem(itemArr);
         res.redirect("/");
       });
-
   });
-
-
-
   return router;
 };
 
