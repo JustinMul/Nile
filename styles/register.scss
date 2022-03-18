@@ -23,7 +23,7 @@ body {
 }
 
 .name-middle {
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,14 +37,14 @@ body {
 }
 
 .password-middle {
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .account-middle {
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,6 +59,7 @@ body {
 }
 
 #register-button{
+  margin-bottom: 10px;
   background-color: green;
   font-size: 20px;
   color: white;
@@ -69,4 +70,8 @@ body {
 #register-button:hover {
   border-color: #000000;
   box-shadow: 0 0 10px #000000;
+}
+
+#navBar {
+  opacity: 0;
 }
