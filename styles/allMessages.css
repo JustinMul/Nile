@@ -1,0 +1,11 @@
+.messageBox {
+  color: red;
+  background-color: #595858;
+  margin-top: auto;
+}
+
+.alert {
+  color: red;
+  display: none;
+}
+/*# sourceMappingURL=allMessages.css.map */
