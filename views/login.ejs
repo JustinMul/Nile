@@ -8,12 +8,8 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/allMessages.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/error.css" type="text/css" />
+
+  <link rel="stylesheet" href="/styles/login.css" type="text/css" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
@@ -34,18 +30,20 @@
 
   <%- include('partials/_header') %>
 
-  <div class="container">
+  <div id="login-container">
     <form id = 'loginButton' action="/login" method="POST">
     <h1>Login</h1>
-
-    <label for="name"><b>Email Addres</b></label>
+    <p class="nice">
+    <div class="middle">
+    <p><label for="name"><b>Email Addres</b></label></p>
     <input type="email" placeholder="Enter email" name="email" required>
-
-    <label for="password"><b>Password</b></label>
+  </div>
+    <p><label for="password"><b>Password</b></label></p>
     <input type="password" placeholder="Enter Password" name="password" required>
-
-
+  <div>
     <button type="submit" id="login-button">Login</button>
+  </div>
+  </p>
     <p class = "alert" id = "loginError"></p>
   </form>
   </div>
