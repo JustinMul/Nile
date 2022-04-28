@@ -3,9 +3,9 @@ Buy/Sell Listing Website
 An app where you can buy lovely plants. 
 
 
-Buyer can register and login our website.
-In the home page buyer can see featured products.
-Buyer can filter items by price, favourite items to check up on them later,
+Buyer can register and login to our website.
+In the home page buyers can see featured products.
+Buyer can filter items by price, favorite items to check up on them later,
 and send messages to the user that is listing the item.
 
 
